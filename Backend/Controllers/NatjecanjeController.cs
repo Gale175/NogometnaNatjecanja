@@ -1,6 +1,13 @@
-﻿namespace Backend.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Backend.Controllers
 {
-    public class NatjecanjeController
+    [ApiController]
+    [Route("api/v1/[controller]")]
+    public class NatjecanjeController : ControllerBase 
+
     {
+       
+
     }
 }
