@@ -14,6 +14,11 @@ builder.Services.AddOpenApi();
 // dodati swagger
 builder.Services.AddSwaggerGen();
 
+// dodavanje db contexta
+builder.Services.AddDbContext<NatjecanjaContext>(o => {
+    o.UseSqlServer(builder.Configuration.GetConnectionString("NogometnaNatjecanjaContext"));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
