@@ -81,7 +81,7 @@ namespace Backend.Controllers
                 var natjecanjeBaza = this.context.Natjecanja.Find(sifra);
                 if (natjecanjeBaza == null)
                 {
-                    return NotFound(new { poruka = $"Natjecanje s šifrom {sifra} ne postoji" });
+                    return NotFound(new { poruka = $"Natjecanje sa šifrom {sifra} ne postoji" });
                 }
 
                 // rucni mapping - kasnije automatika
