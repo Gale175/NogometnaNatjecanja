@@ -20,6 +20,16 @@ builder.Services.AddDbContext<NatjecanjaContext>(o =>
     o.UseSqlServer(builder.Configuration.GetConnectionString("NogometnaNatjecanjaContext"));
 });
 
+// Svi se mogu od svakud spojiti na naš API
+builder.Services.AddCors(o => {
+    o.AddPolicy("CorsPolicy", b => { 
+        b.AllowAnyOrigin();   // ovo može iæi i b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        b.AllowAnyMethod();
+        b.AllowAnyHeader();
+    });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -46,5 +56,7 @@ app.UseStaticFiles();
 app.UseDefaultFiles();
 
 app.MapFallbackToFile("index.html");
+
+app.UseCors("CorsPolicy");
 
 app.Run();
