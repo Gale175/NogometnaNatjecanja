@@ -15,17 +15,17 @@ builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 
 // dodavanje db contexta
-builder.Services.AddDbContext<NatjecanjaContext>(o => {
+builder.Services.AddDbContext<NatjecanjaContext>(o =>
+{
     o.UseSqlServer(builder.Configuration.GetConnectionString("NogometnaNatjecanjaContext"));
 });
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+
+app.MapOpenApi();
+
 
 app.UseHttpsRedirection();
 
@@ -40,5 +40,11 @@ app.UseSwaggerUI(o =>
 });
 
 app.MapControllers();
+
+app.UseStaticFiles();
+
+app.UseDefaultFiles();
+
+app.MapFallbackToFile("index.html");
 
 app.Run();
