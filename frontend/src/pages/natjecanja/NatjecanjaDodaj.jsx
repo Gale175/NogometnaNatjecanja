@@ -38,7 +38,7 @@ export default function NatjecanjaDodaj(){
 
     return(
     <>
-    Dodavanje smjera
+    Dodavanje natjecanja
     <Form onSubmit={odradiSubmit}>
 
         <Form.Group controlId="naziv">

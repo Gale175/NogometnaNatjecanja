@@ -2,11 +2,11 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { RouteNames } from "../../constants";
 import moment from "moment";
-import SmjerService from "../../services/NatjecanjeService";
+import NatjecanjeService from "../../services/NatjecanjeService";
 import { useEffect, useState } from "react";
 
 
-export default function SmjeroviPromjena(){
+export default function NatjecanjaPromjena(){
 
     const navigate = useNavigate();
     const [smjer,setSmjer] = useState({});

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import SmjerService from "../../services/NatjecanjeService"
+import NatjecanjeService from "../../services/NatjecanjeService"
 import { Button, Table } from "react-bootstrap";
 import { NumericFormat } from "react-number-format";
 import moment from "moment";
@@ -10,7 +10,7 @@ import { RouteNames } from "../../constants";
 
 export default function NatjecanjaPregled(){
 
-    const[smjerovi, setNatjecanja] = useState();
+    const[natjecanja, setNatjecanja] = useState();
     const navigate = useNavigate();
 
     async function dohvatiNatjecanja(){
@@ -18,7 +18,7 @@ export default function NatjecanjaPregled(){
         setNatjecanja(odgovor)
     }
 
-    // hooks (kuka) se izvodi prilikom dolaska na stranicu Smjerovi
+    // hooks (kuka) se izvodi prilikom dolaska na stranicu Natjecanja
     useEffect(()=>{
         dohvatiNatjecanja();
     },[])
@@ -47,25 +47,25 @@ export default function NatjecanjaPregled(){
         if(!confirm('Sigurno obrisati')){
             return;
         }
-        brisanjeSmjera(sifra);
+        brisanjeNatjecanja(sifra);
     }
 
-    async function brisanjeSmjera(sifra) {
-        const odgovor = await SmjerService.obrisi(sifra);
+    async function brisanjeNatjecanja(sifra) {
+        const odgovor = await NatjecanjeService.obrisi(sifra);
         if(odgovor.greska){
             alert(odgovor.poruka);
             return;
         }
-        dohvatiSmjerove();
+        dohvatiNatjecanja();
     }
 
 
     return(
         <>
         <Link
-        to={RouteNames.SMJER_NOVI}
+        to={RouteNames.NATJECANJE_NOVI}
         className="btn btn-success siroko"
-        >Dodaj novi smjer</Link>
+        >Dodaj novo natjecanje</Link>
         <Table striped bordered hover responsive>
             <thead>
                 <tr>
@@ -78,22 +78,22 @@ export default function NatjecanjaPregled(){
                 </tr>
             </thead>
             <tbody>
-                {smjerovi && smjerovi.map((smjer,index)=>(
+                {natjecanja && natjecanja.map((natjecanje,index)=>(
                     <tr key={index}>
                         <td>
-                            {smjer.naziv}
+                            {natjecanje.naziv}
                         </td>
                         <td>
-                            {smjer.vrsta}
+                            {natjecanje.vrsta}
                         </td>
                         <td>
-                            {smjer.drzava}
+                            {natjecanje.drzava}
                         </td>
                         <td>
-                            {smjer.sezona}
+                            {natjecanje.sezona}
                         </td>
                         <td>
-                            {smjer.pobjednik}
+                            {natjecanje.pobjednik}
                         </td>
                         
                   
@@ -101,12 +101,12 @@ export default function NatjecanjaPregled(){
 
                         <td>
                             <Button
-                            onClick={()=>navigate(`/smjerovi/${smjer.sifra}`)}
+                            onClick={()=>navigate(`/natjecanja/${natjecanje.sifra}`)}
                             >Promjena</Button>
                             &nbsp;&nbsp;&nbsp;
                             <Button
                             variant="danger"
-                            onClick={()=>obrisi(smjer.sifra)}
+                            onClick={()=>obrisi(natjecanje.sifra)}
                             >Obriši</Button>
                         </td>
                     </tr>
