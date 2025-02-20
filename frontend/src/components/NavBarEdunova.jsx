@@ -26,7 +26,7 @@ export default function NavBarEdunova(){
                  
                     <NavDropdown title="Programi" id="basic-nav-dropdown">
                     <NavDropdown.Item
-                    onClick={()=>navigate(RouteNames.NATJECANJA_PREGLED)}
+                    onClick={()=>navigate(RouteNames.NATJECANJE_PREGLED)}
                     >Natjecanja</NavDropdown.Item>
                     
                     </NavDropdown>

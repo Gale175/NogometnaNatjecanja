@@ -6,7 +6,7 @@ import NatjecanjeService from "../../services/NatjecanjeService";
 import { useEffect, useState } from "react";
 
 
-export default function NatjecanjaPromjena(){
+export default function SmjeroviPromjena(){
 
     const navigate = useNavigate();
     const [smjer,setSmjer] = useState({});
