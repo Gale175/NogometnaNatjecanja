@@ -68,7 +68,7 @@ export default function NatjecanjaDodaj(){
 
         <Form.Group controlId="najboljiIgrac">
             <Form.Label>MVP</Form.Label>
-            <Form.Control type="text" name="najboljiIgrac" required />
+            <Form.Control type="text" name="najboljiIgrac" />
         </Form.Group>
 
 

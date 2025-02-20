@@ -3,7 +3,8 @@
 export default function Pocetna(){
     return(
         <>
-        Dobrodošli na moju aplikaciju
+        Dobrodošli na moju aplikaciju!
         </>
+        
     )
 }

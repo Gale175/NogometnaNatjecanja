@@ -6,15 +6,15 @@ import NatjecanjeService from "../../services/NatjecanjeService";
 import { useEffect, useState } from "react";
 
 
-export default function SmjeroviPromjena(){
+export default function NatjecanjaPromjena(){
 
     const navigate = useNavigate();
-    const [smjer,setSmjer] = useState({});
+    const [natjecanje,setSmjer] = useState({});
     const [vaucer,setVaucer] = useState(false)
     const routeParams = useParams();
 
-    async function dohvatiSmjer(){
-        const odgovor = await SmjerService.getBySifra(routeParams.sifra)
+    async function dohvatiNatjecanje(){
+        const odgovor = await NatjecanjeService.getBySifra(routeParams.sifra)
 
         if(odgovor.izvodiSeOd!=null){
             odgovor.izvodiSeOd = moment.utc(odgovor.izvodiSeOd).format('yyyy-MM-DD')
@@ -25,16 +25,16 @@ export default function SmjeroviPromjena(){
     }
 
     useEffect(()=>{
-        dohvatiSmjer();
+        dohvatiNatjecanje();
     },[])
 
-    async function promjena(smjer){
-        const odgovor = await SmjerService.promjena(routeParams.sifra,smjer);
+    async function promjena(natjecanje){
+        const odgovor = await NatjecanjeService.promjena(routeParams.sifra,natjecanje);
         if(odgovor.greska){
             alert(odgovor.poruka)
             return
         }
-        navigate(RouteNames.SMJER_PREGLED)
+        navigate(RouteNames.NATJECANJE_PREGLED)
     }
 
     function odradiSubmit(e){ // e je event
@@ -45,54 +45,70 @@ export default function SmjeroviPromjena(){
         promjena(
             {
                 naziv: podaci.get('naziv'),
-                cijenaSmjera: parseFloat(podaci.get('cijenaSmjera')),
-                izvodiSeOd: moment.utc(podaci.get('izvodiSeOd')),
-                vaucer: podaci.get('vaucer')=='on' ? true : false
+                vrsta: podaci.get('vrsta'),
+                drzava: podaci.get('drzava'),
+                sezona: podaci.get('sezona'),
+                pobjednik: podaci.get('pobjednik'),
+                MVP: podaci.get('najboljiIgrac')
             }
         );
     }
 
     return(
     <>
-    Promjena smjera
+    Promjena natjecanja
     <Form onSubmit={odradiSubmit}>
 
         <Form.Group controlId="naziv">
             <Form.Label>Naziv</Form.Label>
             <Form.Control type="text" name="naziv" required 
-            defaultValue={smjer.naziv}/>
+            defaultValue={natjecanje.naziv}/>
         </Form.Group>
 
-        <Form.Group controlId="cijenaSmjera">
-            <Form.Label>Cijena</Form.Label>
-            <Form.Control type="number" name="cijenaSmjera" step={0.01} 
-            defaultValue={smjer.cijenaSmjera}/>
+        <Form.Group controlId="vrsta">
+            <Form.Label>Vrsta</Form.Label>
+            <Form.Control type="text" name="vrsta" required 
+            defaultValue={natjecanje.vrsta}/>
+            
         </Form.Group>
 
-        <Form.Group controlId="izvodiSeOd">
-            <Form.Label>Izvodi se od</Form.Label>
-            <Form.Control type="date" name="izvodiSeOd" 
-            defaultValue={smjer.izvodiSeOd}/>
+        <Form.Group controlId="drzava">
+            <Form.Label>Država</Form.Label>
+            <Form.Control type="text" name="drzava" required 
+            defaultValue={natjecanje.drzava}/>
         </Form.Group>
 
+        <Form.Group controlId="sezona">
+            <Form.Label>Sezona</Form.Label>
+            <Form.Control type="text" name="sezona" required 
+            defaultValue={natjecanje.sezona}/>
+        </Form.Group>
 
-        <Form.Group controlId="vaucer">
-            <Form.Check label="Vaučer" name="vaucer" 
-                onChange={(e)=>setVaucer(e.target.checked)}
-                checked={vaucer}  />
-            </Form.Group>
+        <Form.Group controlId="pobjednik">
+            <Form.Label>Pobjednik</Form.Label>
+            <Form.Control type="text" name="pobjednik" required 
+            defaultValue={natjecanje.pobjednik}/>
+        </Form.Group>
+
+        <Form.Group controlId="najboljiIgrac">
+            <Form.Label>MVP</Form.Label>
+            <Form.Control type="text" name="najboljiIgrac"
+            defaultValue={natjecanje.najboljiIgrac}/>
+            
+        </Form.Group>
+
         <hr/>
 
         <Row>
             <Col xs={6} sm={6} md={3} lg={2} xl={6} xxl={6}>
                 <Link
-                to={RouteNames.SMJER_PREGLED}
+                to={RouteNames.NATJECANJE_PREGLED}
                 className="btn btn-danger siroko"
                 >Odustani</Link>
             </Col>
             <Col xs={6} sm={6} md={9} lg={10} xl={6} xxl={6}>
                 <Button variant="success" type="submit" className="siroko">
-                    Promjeni smjer
+                    Promjeni natjecanje
                 </Button>
             </Col>
         </Row>
