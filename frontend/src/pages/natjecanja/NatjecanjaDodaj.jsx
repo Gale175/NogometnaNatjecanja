@@ -46,20 +46,31 @@ export default function NatjecanjaDodaj(){
             <Form.Control type="text" name="naziv" required />
         </Form.Group>
 
-        <Form.Group controlId="cijenaSmjera">
-            <Form.Label>Cijena</Form.Label>
-            <Form.Control type="number" name="cijenaSmjera" step={0.01} />
+        <Form.Group controlId="vrsta">
+            <Form.Label>Vrsta</Form.Label>
+            <Form.Control type="text" name="vrsta" required />
         </Form.Group>
 
-        <Form.Group controlId="izvodiSeOd">
-            <Form.Label>Izvodi se od</Form.Label>
-            <Form.Control type="date" name="izvodiSeOd" />
+        <Form.Group controlId="drzava">
+            <Form.Label>Država</Form.Label>
+            <Form.Control type="text" name="drzava" required />
         </Form.Group>
 
-
-        <Form.Group controlId="vaucer">
-            <Form.Check label="Vaučer" name="vaucer" />
+        <Form.Group controlId="sezona">
+            <Form.Label>Sezona</Form.Label>
+            <Form.Control type="text" name="sezona" required />
         </Form.Group>
+
+        <Form.Group controlId="pobjednik">
+            <Form.Label>Pobjednik</Form.Label>
+            <Form.Control type="text" name="pobjednik" required />
+        </Form.Group>
+
+        <Form.Group controlId="najboljiIgrac">
+            <Form.Label>MVP</Form.Label>
+            <Form.Control type="text" name="najboljiIgrac" required />
+        </Form.Group>
+
 
         <hr/>
 
