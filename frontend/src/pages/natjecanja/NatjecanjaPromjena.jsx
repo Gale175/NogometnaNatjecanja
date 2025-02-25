@@ -49,7 +49,7 @@ export default function NatjecanjaPromjena(){
                 drzava: podaci.get('drzava'),
                 sezona: podaci.get('sezona'),
                 pobjednik: podaci.get('pobjednik'),
-                MVP: podaci.get('najboljiIgrac')
+                najboljiIgrac: podaci.get('najboljiIgrac')
             }
         );
     }

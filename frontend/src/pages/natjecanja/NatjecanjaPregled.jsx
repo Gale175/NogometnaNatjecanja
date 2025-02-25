@@ -75,6 +75,7 @@ export default function NatjecanjaPregled(){
                     <th>Sezona</th>
                     <th>Pobjednik</th>
                     <th>MVP</th>
+                    <th>Opcije</th>
                 </tr>
             </thead>
             <tbody>
@@ -94,6 +95,9 @@ export default function NatjecanjaPregled(){
                         </td>
                         <td>
                             {natjecanje.pobjednik}
+                        </td>
+                        <td>
+                            {natjecanje.najboljiIgrac}
                         </td>
                         
                   
