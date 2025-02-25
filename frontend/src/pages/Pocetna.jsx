@@ -3,7 +3,10 @@
 export default function Pocetna(){
     return(
         <>
-        Dobrodošli na moju aplikaciju!
+        <p style={{color: 'red', fontSize: '25px'}}>
+            Dobrodošli na moju aplikaciju!
+        </p>
+        
         </>
         
     )
