@@ -31,6 +31,7 @@ export default function NavBarEdunova(){
                     
                     </NavDropdown>
                     <Nav.Link href={PRODUKCIJA + '/swagger'} target='_blank'>Swagger</Nav.Link>
+                    
                 </Nav>
                 </Navbar.Collapse>
             </Container>
