@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 export default function NatjecanjaPromjena(){
 
     const navigate = useNavigate();
-    const [natjecanje,setSmjer] = useState({});
+    const [natjecanje,setNatjecanje] = useState({});
     const [vaucer,setVaucer] = useState(false)
     const routeParams = useParams();
 
@@ -20,7 +20,7 @@ export default function NatjecanjaPromjena(){
             odgovor.izvodiSeOd = moment.utc(odgovor.izvodiSeOd).format('yyyy-MM-DD')
         }
         
-        setSmjer(odgovor)
+        setNatjecanje(odgovor)
         setVaucer(odgovor.vaucer)
     }
 
