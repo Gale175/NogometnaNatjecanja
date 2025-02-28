@@ -1,4 +1,5 @@
 using Backend.Data;
+using Beckend.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -29,6 +30,8 @@ builder.Services.AddCors(o => {
     });
 });
 
+// automapper
+builder.Services.AddAutoMapper(typeof(EdunovaMappingProfile));
 
 var app = builder.Build();
 
@@ -51,12 +54,11 @@ app.UseSwaggerUI(o =>
 
 app.MapControllers();
 
-app.UseStaticFiles();
-
-app.UseDefaultFiles();
-
-app.MapFallbackToFile("index.html");
-
 app.UseCors("CorsPolicy");
+
+//za potrebe produkcije
+app.UseStaticFiles();
+app.UseDefaultFiles();
+app.MapFallbackToFile("index.html");
 
 app.Run();
