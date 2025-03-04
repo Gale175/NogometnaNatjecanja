@@ -5,9 +5,9 @@ namespace Backend.Models.DTO
         int Sifra, 
         string? Ime, 
         string? Prezime,
-        string? Dob, 
-        string? Golovi,
-        string? Asistencije);
+        int? Dob, 
+        int? Golovi,
+        int? Asistencije);
 
 
 }

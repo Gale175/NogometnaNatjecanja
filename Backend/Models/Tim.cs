@@ -9,8 +9,6 @@ namespace Backend.Models
         [ForeignKey("natjecanje")]
         public required Natjecanje Natjecanje { get; set; }
 
-        public string? Predavac { get; set; }
-
         public string? Trener { get; set; }
 
         public string? Stadion { get; set; }
