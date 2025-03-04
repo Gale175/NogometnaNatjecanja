@@ -1,5 +1,5 @@
 using Backend.Data;
-using Beckend.Mapping;
+using Backend.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen();
 // dodavanje db contexta
 builder.Services.AddDbContext<NatjecanjaContext>(o =>
 {
-    o.UseSqlServer(builder.Configuration.GetConnectionString("NogometnaNatjecanjaContext"));
+    o.UseSqlServer(builder.Configuration.GetConnectionString("NatjecanjaContext"));
 });
 
 // Svi se mogu od svakud spojiti na naš API

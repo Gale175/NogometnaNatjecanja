@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Backend.Data;
-using Beckend.Models;
+using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EdunovaAPP.Controllers
+namespace Backend.Controllers
 {
 
-    public abstract class NogometnaNatjecanjaontroller:ControllerBase
+    public abstract class NogometnaNatjecanjaController:ControllerBase
     {
 
         // dependecy injection
@@ -18,7 +18,7 @@ namespace EdunovaAPP.Controllers
 
         // dependecy injection
         // 2. proslijediš instancu kroz konstruktor
-        public NogometnaNatjecanjaontroller(NatjecanjaContext context, IMapper mapper)
+        public NogometnaNatjecanjaController(NatjecanjaContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

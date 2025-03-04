@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Beckend.Models.DTO
+namespace Backend.Models.DTO
 {
     public record NatjecanjeDTOInsertUpdate(
         [Required(ErrorMessage = "Naziv je obavezan")]

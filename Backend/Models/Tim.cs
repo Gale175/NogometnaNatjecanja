@@ -1,7 +1,7 @@
 ﻿using Backend.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Beckend.Models
+namespace Backend.Models
 {
     public class Tim : Entitet
     {

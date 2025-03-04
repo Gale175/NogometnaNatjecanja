@@ -1,12 +1,13 @@
 ﻿
-namespace Bekcend.Models.DTO
+namespace Backend.Models.DTO
 {
     public record IgracDTORead(
         int Sifra, 
-        string Ime, 
-        string Prezime,
-        string Email, 
-        string? Oib);
+        string? Ime, 
+        string? Prezime,
+        string? Dob, 
+        string? Golovi,
+        string? Asistencije);
 
 
 }

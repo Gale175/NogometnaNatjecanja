@@ -1,15 +1,13 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Beckend.Models.DTO
+namespace Backend.Models.DTO
 {
     public record IgracDTOInsertUpdate(
         [Required(ErrorMessage = "Ime obavezno")]
-        string? Ime,
+        string Ime,
         [Required(ErrorMessage = "Prezime obavezno")]
-        string? Prezime,
-        [Required(ErrorMessage = "Email obavezno")]
-        [EmailAddress(ErrorMessage ="Email nije dobrog formata")]
-        string? Email,
-        string? Oib);
+        string Prezime,
+        string? Dob,
+        string? Golovi,
+        string? Asistencije);
 }

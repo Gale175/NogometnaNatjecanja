@@ -1,15 +1,16 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace Beckend.Models.DTO
+namespace Backend.Models.DTO
 {
     public record TimDTOInsertUpdate(
-        [Required(ErrorMessage = "Naziv obavezno")]
+        [Required(ErrorMessage = "Naziv tima obavezan")]
         string? Naziv,
         [Range(1, int.MaxValue, ErrorMessage = "{0} mora biti između {1} i {2}")]
-        [Required(ErrorMessage = "smjer obavezno")]
-        int? SmjerSifra,
-        string? Predavac
+        [Required(ErrorMessage = "Najtecanje obavezno")]
+        int? NatjecanjeSifra,
+        string? Trener,
+        string? Stadion
         );
 
 

@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using Backend.Models;
 using Backend.Models.DTO;
-using Beckend.Models.DTO;
 
-namespace Beckend.Mapping
+namespace Backend.Mapping
 {
-    public class EdunovaMappingProfile:Profile
+    public class EdunovaMappingProfile : Profile
     {
         public EdunovaMappingProfile()
         {
@@ -13,6 +12,22 @@ namespace Beckend.Mapping
             CreateMap<Natjecanje, NatjecanjeDTORead>();
             CreateMap<NatjecanjeDTOInsertUpdate, Natjecanje>();
             CreateMap<Natjecanje, NatjecanjeDTOInsertUpdate>();
+
+            CreateMap<Igrac, IgracDTORead>();
+            CreateMap<IgracDTOInsertUpdate, Igrac>();
+            CreateMap<Igrac, IgracDTOInsertUpdate>();
+
+
+            CreateMap<Tim, TimDTORead>()
+                .ForCtorParam(
+                   "NatjecanjeNaziv",
+                   opt => opt.MapFrom(src => src.Natjecanje.Naziv)
+               );
+            CreateMap<Tim, TimDTOInsertUpdate>().ForMember(
+                    dest => dest.NatjecanjeSifra,
+                    opt => opt.MapFrom(src => src.Natjecanje.Sifra)
+                );
+            CreateMap<TimDTOInsertUpdate, Tim>();
 
         }
     }

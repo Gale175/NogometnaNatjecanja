@@ -1,18 +1,16 @@
 ﻿using AutoMapper;
 using Backend.Data;
-using Beckend.Controllers;
-using Beckend.Models;
-using Beckend.Models.DTO;
-using Bekcend.Models.DTO;
-using EdunovaAPP.Controllers;
+using Backend.Models;
+using Backend.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Beckend.Controllers
+
+namespace Backend.Controllers
 {
 
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class IgracController(NatjecanjaContext context, IMapper mapper) : NogometnaNatjecanjaontroller(context, mapper)
+    public class IgracController(NatjecanjaContext context, IMapper mapper) : NogometnaNatjecanjaController(context, mapper)
     {
 
 

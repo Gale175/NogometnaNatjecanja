@@ -1,11 +1,12 @@
 ﻿
-namespace Beckend.Models.DTO
+namespace Backend.Models.DTO
 {
     public record TimDTORead(
         int Sifra,
         string? Naziv,
-        string? SmjerNaziv,
-        string? Predavac
+        string? NatjecanjeNaziv,
+        string? Trener,
+        string? Stadion
         );
 
 
