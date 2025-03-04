@@ -10,7 +10,7 @@ import { RouteNames } from "../../constants";
 
 export default function NatjecanjaPregled(){
 
-    const[natjecanja, setNatjecanja] = useState([]);
+    const[natjecanja, setNatjecanja] = useState([]); // Inicijalizacija kao prazan niz
     const navigate = useNavigate();
 
     async function dohvatiNatjecanja(){
@@ -19,8 +19,12 @@ export default function NatjecanjaPregled(){
             alert(odgovor.poruka);
             return;
         }
-        //debugger; // ovo radi u Chrome inspect (ali i ostali preglednici)
-        setNatjecanja(odgovor.poruka)
+        if (Array.isArray(odgovor.poruka)) {
+            setNatjecanja(odgovor.poruka); // Postavljanje sa odgovor.poruka
+        } else {
+            console.error('API ne vraća niz natjecanja.');
+            setNatjecanja([]); // Postavite prazan niz kao fallback
+        }
     }
 
     // hooks (kuka) se izvodi prilikom dolaska na stranicu Natjecanja

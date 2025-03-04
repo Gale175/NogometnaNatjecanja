@@ -6,4 +6,4 @@ export const RouteNames={
     NATJECANJE_PROMJENA: '/natjecanja/:sifra'
 }
 
-export const PRODUKCIJA='https://localhost:7218/';
+export const PRODUKCIJA='https://localhost:7218';
