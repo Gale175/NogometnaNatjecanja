@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen();
 // dodavanje db contexta
 builder.Services.AddDbContext<NatjecanjaContext>(o =>
 {
-    o.UseSqlServer(builder.Configuration.GetConnectionString("NatjecanjaContext"));
+    o.UseSqlServer(builder.Configuration.GetConnectionString("NogometnaNatjecanjaContext"));
 });
 
 // Svi se mogu od svakud spojiti na naš API

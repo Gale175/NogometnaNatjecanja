@@ -16,7 +16,7 @@ namespace Backend.Controllers
 
         // RUTE
         [HttpGet]
-        public ActionResult<List<Igrac>> Get()
+        public ActionResult<List<IgracDTORead>> Get()
         {
             if (!ModelState.IsValid)
             {
