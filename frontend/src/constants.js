@@ -6,4 +6,4 @@ export const RouteNames={
     NATJECANJE_PROMJENA: '/natjecanja/:sifra'
 }
 
-export const PRODUKCIJA='https://galema-001-site1.ptempurl.com';
+export const PRODUKCIJA='https://localhost:7218/';

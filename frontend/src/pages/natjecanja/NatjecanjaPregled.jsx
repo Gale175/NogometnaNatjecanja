@@ -10,12 +10,17 @@ import { RouteNames } from "../../constants";
 
 export default function NatjecanjaPregled(){
 
-    const[natjecanja, setNatjecanja] = useState();
+    const[natjecanja, setNatjecanja] = useState([]);
     const navigate = useNavigate();
 
     async function dohvatiNatjecanja(){
-        const odgovor = await NatjecanjeService.get()
-        setNatjecanja(odgovor)
+        const odgovor = await NatjecanjeService.get();
+        if (odgovor.greska){
+            alert(odgovor.poruka);
+            return;
+        }
+        //debugger; // ovo radi u Chrome inspect (ali i ostali preglednici)
+        setNatjecanja(odgovor.poruka)
     }
 
     // hooks (kuka) se izvodi prilikom dolaska na stranicu Natjecanja

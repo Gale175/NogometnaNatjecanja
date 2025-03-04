@@ -10,6 +10,8 @@ export default function NatjecanjaDodaj(){
     const navigate = useNavigate();
 
     async function dodaj(natjecanje){
+        //console.log(smjer)
+        //console.log(JSON.stringify(smjer))
         const odgovor = await NatjecanjeService.dodaj(natjecanje);
         if(odgovor.greska){
             alert(odgovor.poruka)
@@ -22,7 +24,7 @@ export default function NatjecanjaDodaj(){
         e.preventDefault(); // nemoj odraditi zahtjev na server pa standardnom načinu
 
         let podaci = new FormData(e.target);
-
+        //console.log(podaci.get('naziv'))    
         dodaj(
             {
                 naziv: podaci.get('naziv'),
