@@ -1,128 +1,153 @@
-﻿using Backend.Data;
+﻿using AutoMapper;
+using Backend.Data;
 using Backend.Models;
+using Backend.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class NatjecanjeController : ControllerBase 
-
+    public class NatjecanjeController(NatjecanjaContext context, IMapper mapper) : NogometnaNatjecanjaController(context, mapper)
     {
-        // koristimo dependency injection
-        // 1. definiramo privatno svojstvo
-
-        private readonly NatjecanjaContext context;
-
-        // 2. u konstruktoru postavljamo vrijednost
-
-        public NatjecanjeController(NatjecanjaContext context)
+        // RUTE
+        [HttpGet]
+        public ActionResult<List<NatjecanjeDTORead>> Get()
         {
-            this.context = context;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            try
+            {
+                return Ok(_mapper.Map<List<NatjecanjeDTORead>>(_context.Natjecanja));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
+
         }
 
         [HttpGet]
-        public IActionResult Geta()
+        [Route("{sifra:int}")]
+        public ActionResult<NatjecanjeDTOInsertUpdate> GetBySifra(int sifra)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            Natjecanje? e;
             try
             {
-                return Ok(this.context.Natjecanja);
+                e = _context.Natjecanja.Find(sifra);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e);
+                return BadRequest(new { poruka = ex.Message });
             }
-        }
+            if (e == null)
+            {
+                return NotFound(new { poruka = "Natjecanje ne postoji u bazi" });
+            }
 
-        [HttpGet("{sifra:int}")]
-        public IActionResult Get(int sifra)
-        {
-            if (sifra <= 0)
-            {
-                return StatusCode(StatusCodes.Status404NotFound, new { poruka = "Šifra mora biti pozitivan broj" });
-            }
-            try
-            {
-                var natjecanje = this.context.Natjecanja.Find(sifra);
-                if (natjecanje == null)
-                {
-                    return NotFound(new { poruka = $"Natjecanje sa šifrom {sifra} ne postoji" });
-                }
-                return Ok(natjecanje);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e);
-            }
+            return Ok(_mapper.Map<NatjecanjeDTOInsertUpdate>(e));
         }
 
         [HttpPost]
-        public IActionResult Post(Natjecanje natjecanje)
+        public IActionResult Post(NatjecanjeDTOInsertUpdate dto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
             try
             {
-                this.context.Natjecanja.Add(natjecanje);
-                this.context.SaveChanges();
-                return StatusCode(StatusCodes.Status201Created, new { poruka = "Natjecanje uspješno dodano", natjecanje });
+                var e = _mapper.Map<Natjecanje>(dto);
+                _context.Natjecanja.Add(e);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created, _mapper.Map<NatjecanjeDTORead>(e));
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e);
+                return BadRequest(new { poruka = ex.Message });
             }
+
+
+
         }
 
-        [HttpPut("{sifra:int}")]
-        public IActionResult Put(int sifra, Natjecanje natjecanje)
+        [HttpPut]
+        [Route("{sifra:int}")]
+        [Produces("application/json")]
+        public IActionResult Put(int sifra, NatjecanjeDTOInsertUpdate dto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
             try
             {
-
-                var natjecanjeBaza = this.context.Natjecanja.Find(sifra);
-                if (natjecanjeBaza == null)
+                Natjecanje? e;
+                try
                 {
-                    return NotFound(new { poruka = $"Natjecanje sa šifrom {sifra} ne postoji" });
+                    e = _context.Natjecanja.Find(sifra);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(new { poruka = ex.Message });
+                }
+                if (e == null)
+                {
+                    return NotFound(new { poruka = "Natjecanje ne postoji u bazi" });
                 }
 
-                // rucni mapping - kasnije automatika
-                natjecanjeBaza.Naziv = natjecanje.Naziv;
-                natjecanjeBaza.Vrsta = natjecanje.Vrsta;
-                natjecanjeBaza.Drzava = natjecanje.Drzava;
-                natjecanjeBaza.Sezona = natjecanje.Sezona;
-                natjecanjeBaza.Pobjednik = natjecanje.Pobjednik;
-                natjecanjeBaza.NajboljiIgrac = natjecanje.NajboljiIgrac;
+                e = _mapper.Map(dto, e);
 
-                this.context.Natjecanja.Update(natjecanjeBaza);
-                this.context.SaveChanges();
-                return Ok(natjecanjeBaza);
+                _context.Natjecanja.Update(e);
+                _context.SaveChanges();
+
+                return Ok(new { poruka = "Uspješno promjenjeno" });
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e);
+                return BadRequest(new { poruka = ex.Message });
             }
+
         }
 
-        [HttpDelete("{sifra:int}")]
+        [HttpDelete]
+        [Route("{sifra:int}")]
+        [Produces("application/json")]
         public IActionResult Delete(int sifra)
         {
-            if (sifra <= 0)
+            if (!ModelState.IsValid)
             {
-                return StatusCode(StatusCodes.Status404NotFound, new { poruka = "Šifra mora biti pozitivan broj" });
+                return BadRequest(new { poruka = ModelState });
             }
             try
             {
-                var natjecanje = this.context.Natjecanja.Find(sifra);
-                if (natjecanje == null)
+                Natjecanje? e;
+                try
                 {
-                    return NotFound(new { poruka = $"Natjecanje s šifrom {sifra} ne postoji" });
+                    e = _context.Natjecanja.Find(sifra);
                 }
-                this.context.Natjecanja.Remove(natjecanje);
-                this.context.SaveChanges();
-                return NoContent();
+                catch (Exception ex)
+                {
+                    return BadRequest(new { poruka = ex.Message });
+                }
+                if (e == null)
+                {
+                    return NotFound("Natjecanje ne postoji u bazi");
+                }
+                _context.Natjecanja.Remove(e);
+                _context.SaveChanges();
+                return Ok(new { poruka = "Uspješno obrisano" });
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e);
+                return BadRequest(new { poruka = ex.Message });
             }
         }
 
