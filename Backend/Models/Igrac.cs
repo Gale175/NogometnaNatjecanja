@@ -1,6 +1,4 @@
-﻿using Backend.Models;
-
-namespace Backend.Models
+﻿namespace Backend.Models
 {
     public class Igrac:Entitet
     {

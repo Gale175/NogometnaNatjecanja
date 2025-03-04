@@ -1,11 +1,10 @@
-﻿using Backend.Models;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Backend.Models
 {
     public class Tim : Entitet
     {
-        public string Naziv { get; set; }
+        public string? Naziv { get; set; }
 
         [ForeignKey("natjecanje")]
         public required Natjecanje Natjecanje { get; set; }

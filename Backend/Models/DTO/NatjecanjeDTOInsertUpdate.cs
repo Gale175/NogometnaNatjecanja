@@ -8,9 +8,9 @@ namespace Backend.Models.DTO
         string? Vrsta,
         string? Drzava,
         [Required(ErrorMessage = "Sezona mora biti upisana")]
-        string? Sezona,
+        string Sezona,
         [Required(ErrorMessage = "Pobjednik je obavezan")]
-        string? Pobjednik,
+        string Pobjednik,
         string? NajboljiIgrac
         );
 }
