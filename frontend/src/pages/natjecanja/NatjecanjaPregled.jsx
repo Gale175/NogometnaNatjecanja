@@ -6,6 +6,7 @@ import moment from "moment";
 import { GrValidate } from "react-icons/gr";
 import { Link, useNavigate } from "react-router-dom";
 import { RouteNames } from "../../constants";
+import { IoIosAdd } from "react-icons/io";
 
 
 export default function NatjecanjaPregled(){
@@ -71,10 +72,11 @@ export default function NatjecanjaPregled(){
 
     return(
         <>
-        <Link
-        to={RouteNames.NATJECANJE_NOVI}
-        className="btn btn-success siroko"
-        >Dodaj novo natjecanje</Link>
+        <Link to={RouteNames.NATJECANJE_NOVI}className="btn btn-success siroko">
+            <IoIosAdd
+            size={25}
+            />
+            Dodaj novo natjecanje</Link>
         <Table striped bordered hover responsive>
             <thead>
                 <tr>

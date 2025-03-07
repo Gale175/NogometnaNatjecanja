@@ -43,7 +43,7 @@ export default function TimoviPregled(){
             <Link to={RouteNames.TIM_NOVI} className="btn btn-success siroko">
                 <IoIosAdd
                 size={25}
-                /> Dodaj
+                /> Dodaj novi tim
             </Link>
             <Table striped bordered hover responsive>
                 <thead>
@@ -52,6 +52,7 @@ export default function TimoviPregled(){
                         <th>Natjecanje</th>
                         <th>Trener</th>
                         <th>Stadion</th>
+                        <th>Opcije</th>
                     </tr>
                 </thead>
                 <tbody>

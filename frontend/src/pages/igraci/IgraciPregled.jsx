@@ -3,6 +3,7 @@ import IgracService from "../../services/IgracService";
 import { useEffect, useState } from "react";
 import { RouteNames } from "../../constants";
 import { Link, useNavigate } from "react-router-dom";
+import { IoIosAdd } from "react-icons/io";
 
 
 
@@ -53,7 +54,10 @@ export default function IgraciPregled(){
 
     return(
         <>
-            <Link to={RouteNames.IGRAC_NOVI}>Dodaj novog igrača</Link>
+            <Link to={RouteNames.IGRAC_NOVI} className="btn btn-success siroko">
+                <IoIosAdd
+                size={25}
+                />Dodaj novog igrača</Link>
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
@@ -62,6 +66,7 @@ export default function IgraciPregled(){
                         <th>Dob</th>
                         <th>Golovi</th>
                         <th>Asistencije</th>
+                        <th>Opcije</th>
                     </tr>
                 </thead>
                 <tbody>
