@@ -156,6 +156,32 @@ namespace Backend.Controllers
         }
 
 
+        [HttpGet]
+        [Route("trazi/{uvjet}")]
+        public ActionResult<List<IgracDTORead>> TraziIgrac(string uvjet)
+        {
+            if (uvjet == null || uvjet.Length < 3)
+            {
+                return BadRequest(ModelState);
+            }
+            uvjet = uvjet.ToLower();
+            try
+            {
+                IEnumerable<Igrac> query = _context.Igraci;
+                var niz = uvjet.Split(" ");
+                foreach (var s in uvjet.Split(" "))
+                {
+                    query = query.Where(p => p.Ime.ToLower().Contains(s) || p.Prezime.ToLower().Contains(s));
+                }
+                var igraci = query.ToList();
+                return Ok(_mapper.Map<List<IgracDTORead>>(igraci));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { poruka = e.Message });
+            }
+        }
+
 
     }
 }
