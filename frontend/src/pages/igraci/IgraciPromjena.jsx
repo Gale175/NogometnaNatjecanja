@@ -87,7 +87,7 @@ export default function IgraciPromjena(){
                     <Col xs={6} sm={6} md={3} lg={6} xl={6} xxl={6}>
                     <Link to={RouteNames.IGRAC_PREGLED}
                     className="btn btn-danger siroko">
-                    Odustani
+                        Odustani
                     </Link>
                     </Col>
                     <Col xs={6} sm={6} md={9} lg={6} xl={6} xxl={6}>
