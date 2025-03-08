@@ -7,6 +7,7 @@ import { GrValidate } from "react-icons/gr";
 import { Link, useNavigate } from "react-router-dom";
 import { RouteNames } from "../../constants";
 import { IoIosAdd } from "react-icons/io";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 
 export default function NatjecanjaPregled(){
@@ -110,19 +111,26 @@ export default function NatjecanjaPregled(){
                         <td>
                             {natjecanje.najboljiIgrac}
                         </td>
-                        
-                  
 
-
-                        <td>
+                        <td className="sredina">
                             <Button
+                            variant='primary'
                             onClick={()=>navigate(`/natjecanja/${natjecanje.sifra}`)}
-                            >Promjena</Button>
+                            >
+                                <FaEdit 
+                            size={25}
+                            />
+                            </Button>
+
+
                             &nbsp;&nbsp;&nbsp;
                             <Button
                             variant="danger"
                             onClick={()=>obrisi(natjecanje.sifra)}
-                            >Obriši</Button>
+                            >
+                                <FaTrash
+                            size={25}/>
+                            </Button>
                         </td>
                     </tr>
                 ))}

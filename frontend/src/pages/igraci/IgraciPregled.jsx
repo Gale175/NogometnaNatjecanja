@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { RouteNames } from "../../constants";
 import { Link, useNavigate } from "react-router-dom";
 import { IoIosAdd } from "react-icons/io";
-
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 
 export default function IgraciPregled(){
@@ -78,17 +78,21 @@ export default function IgraciPregled(){
                             <td>{e.golovi}</td>
                             <td>{e.asistencije}</td>
                            
-                            <td>
+                            <td className="sredina">
                             <Button
                                 variant="primary"
                                 onClick={()=>navigate(`/Igraci/${e.sifra}`)}>
-                                    Promjeni
+                                    <FaEdit 
+                                size={25}
+                                />
                                 </Button>
+
                                 &nbsp;&nbsp;&nbsp;
                                 <Button
                                 variant="danger"
                                 onClick={()=>obrisi(e.sifra)}>
-                                    Obriši
+                                    <FaTrash
+                                size={25}/>
                                 </Button>
 
                                

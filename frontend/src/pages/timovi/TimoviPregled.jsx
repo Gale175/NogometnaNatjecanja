@@ -62,6 +62,7 @@ export default function TimoviPregled(){
                             <td>{entitet.natjecanjeNaziv}</td>
                             <td>{entitet.trener}</td>
                             <td>{entitet.stadion}</td>
+
                             <td className="sredina">
                                     <Button
                                         variant='primary'
@@ -79,7 +80,7 @@ export default function TimoviPregled(){
                                         onClick={() => obrisiTim(entitet.sifra)}
                                     >
                                         <FaTrash
-                                        size={25}/>
+                                    size={25}/>
                                     </Button>
 
                             </td>
