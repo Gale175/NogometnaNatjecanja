@@ -14,4 +14,4 @@ export const RouteNames={
     TIM_PROMJENA: '/timovi/:sifra'
 }
 
-export const PRODUKCIJA='https://localhost:7218';
+export const PRODUKCIJA='https://galema-001-site1.ptempurl.com';
