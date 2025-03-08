@@ -1,7 +1,12 @@
+import React from 'react';
+import nogometnaPozadina from '../assets/nogometna_pozadina.jpeg';
+import nogometnaPozadinaMobile from '../assets/nogometna_pozadina_mobile.jpg';
+import '../App.css';
+
 
 export default function Pocetna() {
     const backgroundStyle = {
-        backgroundImage: 'url(/nogometna_pozadina.jpeg)',
+        backgroundImage: `url(${nogometnaPozadina})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '80vh',
@@ -14,9 +19,8 @@ export default function Pocetna() {
                 Dobrodošli na moju aplikaciju
             </p>
             <p style={{ color: 'white', fontSize: '15px' }}>
-            ⚽️ za nogometne sladokusce! ⚽️
+                ⚽️ za nogometne sladokusce! ⚽️
             </p>
-            
         </div>
     );
 }
