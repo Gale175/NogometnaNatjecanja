@@ -45,8 +45,8 @@ export default function IgraciPromjena(){
             prezime: podaci.get('prezime'),
             dob: podaci.get('dob'),
             pozicija: podaci.get('pozicija').trim()=='' ? null : podaci.get('pozicija').trim(),
-            golovi: podaci.get('golovi').trim()=='' ? null : podaci.get('golovi').trim(),
-            asistencije: podaci.get('asistencije').trim()=='' ? null : podaci.get('asistencije').trim()
+            golovi: podaci.get('golovi'),
+            asistencije: podaci.get('asistencije')
         });
 
     }
