@@ -28,8 +28,8 @@ export default function IgraciDodaj(){
             prezime: podaci.get('prezime'),
             dob: parseInt(podaci.get('dob')), // promjeni i na ostale int
             pozicija: podaci.get('pozicija').trim()=='' ? null : podaci.get('pozicija').trim(),
-            golovi: podaci.get('golovi'),
-            asistencije: podaci.get('asistencije')
+            golovi: podaci.get('golovi'). trim()=='' ? null : podaci.get('golovi').trim(),
+            asistencije: podaci.get('asistencije').trim()=='' ? null : podaci.get('asistencije').trim()
         });
 
     }
