@@ -60,31 +60,31 @@ insert into natjecanja
 ('Bundesliga','Klupsko prvenstvo','Njemačka','2023/2024','Bayer Leverkusen','Florian Wirtz');
 
 insert into igraci
-(ime,prezime,dob,golovi,asistencije) values
-('Vinicius','Junior',21,23,24),
-('Thibaut','Courtois', 33, 0, 0),
-('Kepa','Arrizabalaga', 31, 0, 0),
-('Andriy','Lunin', 28, 0, 1),
-('Dani','Carvajal', 32, 10, 7),
-('Antonio','Rudiger', 30, 3, 1),
-('Luka','Modrić', 39, 5, 18),
-('Toni','Kroos', 34, 4, 18),
-('Jude','Bellingham', 23, 18, 14),
-('Kylian','Mbappe', 23, 38, 21),
-('Ederson','Moreira', 33, 0, 0),
-('Ruben','Dias', 28, 5, 2),
-('Josko','Gvardiol', 21, 6, 10),
-('Kevin','De Bruyne', 30, 14, 19),
-('Rodri','Ivan', 30, 2, 4),
-('Bernardo','Silva',28,10, 13),
-('Florian','Wirtz', 20, 18, 20),
-('Lautaro','Martinez', 30, 21, 14),
-('Lamine','Yamal', 17, 10, 11),
-('Robert','Lewandovski', 34, 24, 17),
-('Dejan','Lovren', 36, 3, 2),
-('Lionel','Messi', 37, 20, 17),
-('Mason','Greenwood', 22, 10, 7),
-('Hakan','Chalhanoglu', 29, 10, 13);
+(ime,prezime,dob,pozicija,golovi,asistencije) values
+('Vinicius','Junior',21,'Napadač',23,24),
+('Thibaut','Courtois', 33,'Golman', 0, 0),
+('Kepa','Arrizabalaga', 31,'Golman', 0, 0),
+('Andriy','Lunin', 28,'Golman', 0, 1),
+('Dani','Carvajal', 32,'Branič', 10, 7),
+('Antonio','Rudiger', 30,'Branič', 3, 1),
+('Luka','Modrić', 39,'Vezni', 5, 18),
+('Toni','Kroos', 34,'Vezni', 4, 18),
+('Jude','Bellingham', 23,'Vezni', 18, 14),
+('Kylian','Mbappe', 23,'Napadač', 38, 21),
+('Ederson','Moreira', 33,'Golman', 0, 0),
+('Ruben','Dias', 28,'Branič', 5, 2),
+('Josko','Gvardiol', 21,'Branič', 6, 10),
+('Kevin','De Bruyne', 30,'Vezni', 14, 19),
+('Rodri','Ivan', 30,'Vezni', 2, 4),
+('Bernardo','Silva',28,'Napadač',10, 13),
+('Florian','Wirtz', 20,'Vezni', 18, 20),
+('Lautaro','Martinez', 30,'Napadač', 21, 14),
+('Lamine','Yamal', 17,'Napadač', 10, 11),
+('Robert','Lewandovski', 34,'Napadač', 24, 17),
+('Dejan','Lovren', 36,'Branič', 3, 2),
+('Lionel','Messi', 37,'Napadač', 20, 17),
+('Mason','Greenwood', 22,'Napadač', 10, 7),
+('Hakan','Chalhanoglu', 29,'Vezni', 10, 13);
 
 insert into timovi
 (naziv,natjecanje,trener,stadion) values
