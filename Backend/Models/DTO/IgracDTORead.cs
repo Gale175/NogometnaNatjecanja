@@ -6,6 +6,7 @@ namespace Backend.Models.DTO
         string Ime, 
         string Prezime,
         int Dob, 
+        string? Pozicija,
         int Golovi,
         int Asistencije);
 

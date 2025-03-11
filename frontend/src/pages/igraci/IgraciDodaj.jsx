@@ -26,7 +26,8 @@ export default function IgraciDodaj(){
         dodaj({
             ime: podaci.get('ime'),
             prezime: podaci.get('prezime'),
-            dob: podaci.get('dob'),
+            dob: parseInt(podaci.get('dob')), // promjeni i na ostale int
+            pozicija: podaci.get('pozicija').trim()=='' ? null : podaci.get('pozicija').trim(),
             golovi: podaci.get('golovi'),
             asistencije: podaci.get('asistencije')
         });
@@ -51,6 +52,11 @@ export default function IgraciDodaj(){
                 <Form.Group controlId="email">
                     <Form.Label>Dob</Form.Label>
                     <Form.Control type="text" name="dob"  />
+                </Form.Group>
+
+                <Form.Group controlId="pozicija">
+                    <Form.Label>Pozicija</Form.Label>
+                    <Form.Control type="text" name="pozicija" />
                 </Form.Group>
 
                 <Form.Group controlId="oib">

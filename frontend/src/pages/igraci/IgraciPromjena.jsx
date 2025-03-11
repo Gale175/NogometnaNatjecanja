@@ -44,6 +44,7 @@ export default function IgraciPromjena(){
             ime: podaci.get('ime'),
             prezime: podaci.get('prezime'),
             dob: podaci.get('dob'),
+            pozicija: podaci.get('pozicija').trim()=='' ? null : podaci.get('pozicija').trim(),
             golovi: podaci.get('golovi'),
             asistencije: podaci.get('asistencije')
         });
@@ -69,6 +70,13 @@ export default function IgraciPromjena(){
                     <Form.Label>Dob</Form.Label>
                     <Form.Control type="text" name="dob" required  defaultValue={igrac.dob}/>
                 </Form.Group>
+
+
+                <Form.Group controlId="pozicija">
+                    <Form.Label>Pozicija</Form.Label>
+                    <Form.Control type="text" name="pozicija" defaultValue={igrac.pozicija} />
+                </Form.Group>
+
 
                 <Form.Group controlId="golovi">
                     <Form.Label>Golovi</Form.Label>

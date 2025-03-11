@@ -8,6 +8,7 @@ namespace Backend.Models.DTO
         [Required(ErrorMessage = "Prezime obavezno")]
         string Prezime,
         int? Dob,
+        string? Pozicija,
         int? Golovi,
         int? Asistencije);
 }

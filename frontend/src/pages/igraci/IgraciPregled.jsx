@@ -64,6 +64,7 @@ export default function IgraciPregled(){
                         <th>Ime</th>
                         <th>Prezime</th>
                         <th>Dob</th>
+                        <th>Pozicija</th>
                         <th>Golovi</th>
                         <th>Asistencije</th>
                         <th>Opcije</th>
@@ -75,6 +76,7 @@ export default function IgraciPregled(){
                             <td>{e.ime}</td>
                             <td>{e.prezime}</td>
                             <td>{e.dob}</td>
+                            <td>{e.pozicija}</td>
                             <td>{e.golovi}</td>
                             <td>{e.asistencije}</td>
                            

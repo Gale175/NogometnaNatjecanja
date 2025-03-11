@@ -33,6 +33,7 @@ sifra int not null primary key identity(1,1),
 ime varchar(50) not null,
 prezime varchar(80) not null,
 dob int not null,
+pozicija varchar(50),
 golovi int not null,
 asistencije int not null
 );
