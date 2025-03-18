@@ -3,10 +3,10 @@
 
 ## Contents
 
-- [AutorizacijaController](#T-Bakcend-Controllers-AutorizacijaController 'Bakcend.Controllers.AutorizacijaController')
-  - [#ctor(context)](#M-Bakcend-Controllers-AutorizacijaController-#ctor-Backend-Data-NatjecanjaContext- 'Bakcend.Controllers.AutorizacijaController.#ctor(Backend.Data.NatjecanjaContext)')
-  - [_context](#F-Bakcend-Controllers-AutorizacijaController-_context 'Bakcend.Controllers.AutorizacijaController._context')
-  - [GenerirajToken(operater)](#M-Bakcend-Controllers-AutorizacijaController-GenerirajToken-Backend-Models-DTO-OperaterDTO- 'Bakcend.Controllers.AutorizacijaController.GenerirajToken(Backend.Models.DTO.OperaterDTO)')
+- [AutorizacijaController](#T-Backend-Controllers-AutorizacijaController 'Backend.Controllers.AutorizacijaController')
+  - [#ctor(context)](#M-Backend-Controllers-AutorizacijaController-#ctor-Backend-Data-NatjecanjaContext- 'Backend.Controllers.AutorizacijaController.#ctor(Backend.Data.NatjecanjaContext)')
+  - [_context](#F-Backend-Controllers-AutorizacijaController-_context 'Backend.Controllers.AutorizacijaController._context')
+  - [GenerirajToken(operater)](#M-Backend-Controllers-AutorizacijaController-GenerirajToken-Backend-Models-DTO-OperaterDTO- 'Backend.Controllers.AutorizacijaController.GenerirajToken(Backend.Models.DTO.OperaterDTO)')
 - [EdunovaExtensions](#T-Backend-Extensions-EdunovaExtensions 'Backend.Extensions.EdunovaExtensions')
   - [AddEdunovaCORS(Services)](#M-Backend-Extensions-EdunovaExtensions-AddEdunovaCORS-Microsoft-Extensions-DependencyInjection-IServiceCollection- 'Backend.Extensions.EdunovaExtensions.AddEdunovaCORS(Microsoft.Extensions.DependencyInjection.IServiceCollection)')
   - [AddEdunovaSecurity(Services)](#M-Backend-Extensions-EdunovaExtensions-AddEdunovaSecurity-Microsoft-Extensions-DependencyInjection-IServiceCollection- 'Backend.Extensions.EdunovaExtensions.AddEdunovaSecurity(Microsoft.Extensions.DependencyInjection.IServiceCollection)')
@@ -48,12 +48,12 @@
   - [Stadion](#P-Backend-Models-Tim-Stadion 'Backend.Models.Tim.Stadion')
   - [Trener](#P-Backend-Models-Tim-Trener 'Backend.Models.Tim.Trener')
 
-<a name='T-Bakcend-Controllers-AutorizacijaController'></a>
+<a name='T-Backend-Controllers-AutorizacijaController'></a>
 ## AutorizacijaController `type`
 
 ##### Namespace
 
-Bakcend.Controllers
+Backend.Controllers
 
 ##### Summary
 
@@ -63,13 +63,13 @@ Kontroler za autorizaciju korisnika.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| context | [T:Bakcend.Controllers.AutorizacijaController](#T-T-Bakcend-Controllers-AutorizacijaController 'T:Bakcend.Controllers.AutorizacijaController') | Kontekst baze podataka. |
+| context | [T:Backend.Controllers.AutorizacijaController](#T-T-Backend-Controllers-AutorizacijaController 'T:Backend.Controllers.AutorizacijaController') | Kontekst baze podataka. |
 
 ##### Remarks
 
-Inicijalizira novu instancu klase [AutorizacijaController](#T-Bakcend-Controllers-AutorizacijaController 'Bakcend.Controllers.AutorizacijaController').
+Inicijalizira novu instancu klase [AutorizacijaController](#T-Backend-Controllers-AutorizacijaController 'Backend.Controllers.AutorizacijaController').
 
-<a name='M-Bakcend-Controllers-AutorizacijaController-#ctor-Backend-Data-NatjecanjaContext-'></a>
+<a name='M-Backend-Controllers-AutorizacijaController-#ctor-Backend-Data-NatjecanjaContext-'></a>
 ### #ctor(context) `constructor`
 
 ##### Summary
@@ -84,16 +84,16 @@ Kontroler za autorizaciju korisnika.
 
 ##### Remarks
 
-Inicijalizira novu instancu klase [AutorizacijaController](#T-Bakcend-Controllers-AutorizacijaController 'Bakcend.Controllers.AutorizacijaController').
+Inicijalizira novu instancu klase [AutorizacijaController](#T-Backend-Controllers-AutorizacijaController 'Backend.Controllers.AutorizacijaController').
 
-<a name='F-Bakcend-Controllers-AutorizacijaController-_context'></a>
+<a name='F-Backend-Controllers-AutorizacijaController-_context'></a>
 ### _context `constants`
 
 ##### Summary
 
 Kontekst baze podataka
 
-<a name='M-Bakcend-Controllers-AutorizacijaController-GenerirajToken-Backend-Models-DTO-OperaterDTO-'></a>
+<a name='M-Backend-Controllers-AutorizacijaController-GenerirajToken-Backend-Models-DTO-OperaterDTO-'></a>
 ### GenerirajToken(operater) `method`
 
 ##### Summary

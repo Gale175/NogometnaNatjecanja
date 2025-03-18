@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
-namespace Bakcend.Controllers
+namespace Backend.Controllers
 {
     /// <summary>
     /// Kontroler za autorizaciju korisnika.
