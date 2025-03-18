@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using Backend.Data;
 using Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
 {
-
+    [Authorize]
     public abstract class NogometnaNatjecanjaController:ControllerBase
     {
 

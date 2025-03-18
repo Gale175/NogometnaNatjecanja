@@ -17,7 +17,7 @@ builder.Services.AddEdunovaCORS();
 
 
 // dodavanje baze podataka
-builder.Services.AddDbContext<NatjecanjaContext>(opcije => opcije.UseSqlServer(builder.Configuration.GetConnectionString("NatjecanjaContext")));
+builder.Services.AddDbContext<NatjecanjaContext>(opcije => opcije.UseSqlServer(builder.Configuration.GetConnectionString("NogometnaNatjecanjaContext")));
 
 
 // automapper

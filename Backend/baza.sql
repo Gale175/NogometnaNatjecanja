@@ -19,7 +19,8 @@ lozinka varchar(200) not null
 -- Lozinka edunova generirana pomoću https://bcrypt-generator.com/
 insert into operateri values ('edunova@edunova.hr',
 '$2a$13$JpDMSmBb5sbGnwDOnsacceDwXBBDDJTZ4bsXlO7DA9sHbIXziu76G'),
-('gale1508@gmail.com', 'martin1.1');
+('gale1508@gmail.com', 
+'$2a$12$sv/Y3GQ.No6FkGsklRt4xOYsCYEjRbjx7KlBTtwE2iWnQDBkUdzIW');
 
 
 create table natjecanja(
