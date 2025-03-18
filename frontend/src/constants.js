@@ -11,7 +11,11 @@ export const RouteNames={
 
     TIM_PREGLED: '/timovi',
     TIM_NOVI: '/timovi/dodaj',
-    TIM_PROMJENA: '/timovi/:sifra'
+    TIM_PROMJENA: '/timovi/:sifra',
+
+    LOGIN: '/login',
+    NADZORNA_PLOCA: '/nadzornaploca',
+    ERA: '/era'
 }
 
 export const PRODUKCIJA='https://galema-001-site1.ptempurl.com';

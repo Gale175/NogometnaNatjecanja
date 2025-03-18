@@ -15,6 +15,15 @@ import TimoviPregled from './pages/timovi/TimoviPregled'
 import TimoviDodaj from './pages/timovi/TimoviDodaj'
 import TimoviPromjena from './pages/timovi/TimoviPromjena'
 
+import LoadingSpinner from './components/LoadingSpinner'
+import Login from "./pages/Login"
+import useAuth from "./hooks/useAuth"
+import NadzornaPloca from './pages/NadzornaPloca'
+import useError from "./hooks/useError"
+import ErrorModal from "./components/ErrorModal"
+import EraDijagram from './pages/EraDiagram'
+
+
 function App() {
 
   return (
@@ -24,6 +33,7 @@ function App() {
         
         <Routes>
           <Route path={RouteNames.HOME} element={<Pocetna />} />
+          
           <Route path={RouteNames.NATJECANJE_PREGLED} element={<NatjecanjaPregled />} />
           <Route path={RouteNames.NATJECANJE_NOVI} element={<NatjecanjaDodaj />} />
           <Route path={RouteNames.NATJECANJE_PROMJENA} element={<NatjecanjaPromjena />} />
