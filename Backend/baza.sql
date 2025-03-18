@@ -10,6 +10,18 @@ GO
 SELECT name, collation_name FROM sys.databases;
 GO
 
+create table operateri(
+sifra int not null primary key identity(1,1),
+email varchar(50) not null,
+lozinka varchar(200) not null
+);
+
+-- Lozinka edunova generirana pomoću https://bcrypt-generator.com/
+insert into operateri values ('edunova@edunova.hr',
+'$2a$13$JpDMSmBb5sbGnwDOnsacceDwXBBDDJTZ4bsXlO7DA9sHbIXziu76G'),
+('gale1508@gmail.com', 'martin1.1');
+
+
 create table natjecanja(
 sifra int not null primary key identity(1,1),
 naziv varchar(80) not null,

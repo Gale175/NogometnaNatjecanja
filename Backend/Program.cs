@@ -1,4 +1,5 @@
 using Backend.Data;
+using Backend.Extensions;
 using Backend.Mapping;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,56 +10,55 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddEdunovaSwaggerGen();
+builder.Services.AddEdunovaCORS();
 
-// dodati swagger
-builder.Services.AddSwaggerGen();
 
-// dodavanje db contexta
-builder.Services.AddDbContext<NatjecanjaContext>(o =>
-{
-    o.UseSqlServer(builder.Configuration.GetConnectionString("NogometnaNatjecanjaContext"));
-});
+// dodavanje baze podataka
+builder.Services.AddDbContext<NatjecanjaContext>(opcije => opcije.UseSqlServer(builder.Configuration.GetConnectionString("NatjecanjaContext")));
 
-// Svi se mogu od svakud spojiti na naš API
-builder.Services.AddCors(o => {
-    o.AddPolicy("CorsPolicy", b => { 
-        b.AllowAnyOrigin();   // ovo može iæi i b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-        b.AllowAnyMethod();
-        b.AllowAnyHeader();
-    });
-});
 
 // automapper
 builder.Services.AddAutoMapper(typeof(EdunovaMappingProfile));
 
+
+// SECURITY
+builder.Services.AddEdunovaSecurity();
+builder.Services.AddAuthorization();
+// END SECURITY
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
-app.MapOpenApi();
-
+//if (app.Environment.IsDevelopment())
+//{
+app.UseSwagger();
+app.UseSwaggerUI(opcije => {
+    opcije.ConfigObject.AdditionalItems.Add("requestSnippetsEnabled", true);
+    opcije.EnableTryItOutByDefault();
+    opcije.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+});
+//}
 
 app.UseHttpsRedirection();
 
+// SECURITY
+app.UseAuthentication();
 app.UseAuthorization();
-
-// swagger sucelje
-app.UseSwagger();
-app.UseSwaggerUI(o =>
-{
-    o.EnableTryItOutByDefault();
-    o.ConfigObject.AdditionalItems.Add("requestSnippetsEnabled", true);
-});
+// ENDSECURITY
 
 app.MapControllers();
 
-app.UseCors("CorsPolicy");
-
-//za potrebe produkcije
+// za potrebe produkcije
 app.UseStaticFiles();
 app.UseDefaultFiles();
 app.MapFallbackToFile("index.html");
+
+app.UseCors("CorsPolicy");
+// završio za potrebe produkcije
 
 app.Run();
