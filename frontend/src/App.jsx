@@ -49,7 +49,7 @@ function App() {
         </Routes>
 
         <hr />
-        &copy; Martin Galik 2025
+        &copy; Martin Galik & Edunova Team WP7 2025
       </Container>
      
     </>

@@ -7,11 +7,14 @@ import NatjecanjeService from '../../services/NatjecanjeService';
 import IgracService from '../../services/IgracService';
 import { RouteNames } from '../../constants';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
-
+import useLoading from "../../hooks/useLoading";
+import useError from '../../hooks/useError';
 
 export default function TimoviPromjena() {
   const navigate = useNavigate();
+  const { showLoading, hideLoading } = useLoading();
   const routeParams = useParams();
+  const { prikaziError } = useError();
 
   const [natjecanja, setNatjecanja] = useState([]);
   const [natjecanjeSifra, setNatjecanjeSifra] = useState(0);
@@ -57,7 +60,9 @@ export default function TimoviPromjena() {
   }
 
   async function dodajIgraca(e) {
+    showLoading();
     const odgovor = await Service.dodajIgraca(routeParams.sifra, e[0].sifra);
+    hideLoading();
     if(odgovor.greska){
       alert(odgovor.poruka);
       return;
@@ -67,7 +72,9 @@ export default function TimoviPromjena() {
   }
 
   async function obrisiIgraca(igrac) {
+    showLoading();
     const odgovor = await Service.obrisiIgraca(routeParams.sifra, igrac);
+    hideLoading();
     if(odgovor.greska){
       alert(odgovor.poruka);
       return;
@@ -77,9 +84,11 @@ export default function TimoviPromjena() {
 
 
   async function dohvatiInicijalnePodatke() {
+    showLoading();
     await dohvatiNatjecanja();
     await dohvatiTim();
     await dohvatiIgraci();
+    hideLoading();
   }
 
 
@@ -89,11 +98,13 @@ export default function TimoviPromjena() {
   },[]);
 
   async function promjena(e){
+    showLoading();
     const odgovor = await Service.promjena(routeParams.sifra,e);
+    hideLoading();
     if(odgovor.greska){
-        alert(odgovor.poruka);
-        return;
-    }
+      prikaziError(odgovor.poruka);
+      return;
+  }
     navigate(RouteNames.TIM_PREGLED);
 }
 

@@ -18,4 +18,4 @@ export const RouteNames={
     ERA: '/era'
 }
 
-export const PRODUKCIJA='https://galema-001-site1.ptempurl.com';
+export const PRODUKCIJA='https://localhost:7218/';

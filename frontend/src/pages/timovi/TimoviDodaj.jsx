@@ -4,16 +4,22 @@ import { useEffect, useState } from 'react';
 import Service from '../../services/TimService';
 import NatjecanjeService from '../../services/NatjecanjeService';
 import { RouteNames } from '../../constants';
-
+import useLoading from "../../hooks/useLoading";
+import useError from '../../hooks/useError';
 
 export default function TimoviDodaj() {
   const navigate = useNavigate();
+  const { showLoading, hideLoading } = useLoading();
 
   const [natjecanja, setNatjecanja] = useState([]);
   const [natjecanjeSifra, setNatjecanjeSifra] = useState(0);
 
+  const { prikaziError } = useError();
+
   async function dohvatiNatjecanja(){
-    const odgovor = await NatjecanjeService.get();
+    showLoading();
+    const odgovor = await NatjecanjaService.get();
+    hideLoading();
     setNatjecanja(odgovor.poruka);
     setNatjecanjeSifra(odgovor.poruka[0].sifra);
   }
@@ -26,9 +32,11 @@ export default function TimoviDodaj() {
   },[]);
 
   async function dodaj(e) {
+    showLoading();
     const odgovor = await Service.dodaj(e);
+    hideLoading();
     if(odgovor.greska){
-      alert(odgovor.poruka);
+      prikaziError(odgovor.poruka);
       return;
     }
     navigate(RouteNames.TIM_PREGLED);
