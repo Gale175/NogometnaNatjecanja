@@ -25,15 +25,30 @@ import EraDijagram from './pages/EraDiagram'
 
 
 function App() {
+  const { isLoggedIn } = useAuth();
+  const { errors, prikaziErrorModal, sakrijError } = useError();
+
+  function godina(){
+    const pocenta = 2024;
+    const trenutna = new Date().getFullYear();
+    if(pocenta===trenutna){
+      return trenutna;
+    }
+    return pocenta + ' - ' + trenutna;
+  }
 
   return (
     <>
-      <Container>
+      <LoadingSpinner />
+      <ErrorModal show={prikaziErrorModal} errors={errors} onHide={sakrijError} />
+      <Container className='aplikacija'>
         <NavBarEdunova />
-        
         <Routes>
           <Route path={RouteNames.HOME} element={<Pocetna />} />
-          
+          {isLoggedIn ? (
+          <>
+          <Route path={RouteNames.NADZORNA_PLOCA} element={<NadzornaPloca />} />
+
           <Route path={RouteNames.NATJECANJE_PREGLED} element={<NatjecanjaPregled />} />
           <Route path={RouteNames.NATJECANJE_NOVI} element={<NatjecanjaDodaj />} />
           <Route path={RouteNames.NATJECANJE_PROMJENA} element={<NatjecanjaPromjena />} />
@@ -46,10 +61,18 @@ function App() {
           <Route path={RouteNames.TIM_NOVI} element={<TimoviDodaj />} />
           <Route path={RouteNames.TIM_PROMJENA} element={<TimoviPromjena />} />
 
+          <Route path={RouteNames.ERA} element={<EraDijagram />} />
+          </>
+        ) : (
+          <>
+            <Route path={RouteNames.LOGIN} element={<Login />} />
+          </>
+        )} 
+
         </Routes>
 
         <hr />
-        &copy; Martin Galik & Edunova Team WP7 2025
+        &copy; Martin Galik & Edunova Team WP7 {godina()}
       </Container>
      
     </>

@@ -77,6 +77,29 @@ async function traziIgrac(uvjet){
     .catch((e)=>{return {greska: true, poruka: 'Problem kod traženja igrača'}})
 }
 
+
+async function getStranicenje(stranica,uvjet){
+    return await HttpService.get('/Igrac/traziStranicenje/'+stranica + '?uvjet=' + uvjet)
+    .then((odgovor)=>{return  {greska: false, poruka: odgovor.data};})
+    .catch((e)=>{ return {greska: true, poruka: 'Problem kod traženja igrača '}});
+  }
+
+async function postaviSliku(sifra, slika) {
+    return await HttpService.put('/Igrac/postaviSliku/' + sifra, slika)
+    .then((odgovor)=>{return  {greska: false, poruka: odgovor.data};})
+    .catch((e)=>{ return {greska: true, poruka: 'Problem kod postavljanja slike igrača '}});
+  }
+
+async function ukupnoIgraca(){
+    return await HttpService.get('/Pocetna/UkupnoIgraca')
+    .then((odgovor)=>{
+        //console.table(odgovor.data);
+        return odgovor.data;
+    })
+    .catch((e)=>{console.error(e)})
+}
+
+
 export default{
     get,
     getBySifra,
@@ -84,5 +107,9 @@ export default{
     dodaj,
     promjena,
 
-    traziIgrac
+    traziIgrac,
+    getStranicenje,
+    postaviSliku,
+
+    ukupnoIgraca
 }

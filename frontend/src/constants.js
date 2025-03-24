@@ -18,4 +18,4 @@ export const RouteNames={
     ERA: '/era'
 }
 
-export const PRODUKCIJA='https://localhost:7218/';
+export const PRODUKCIJA='https://localhost:7218';

@@ -1,28 +1,36 @@
 .ruka{
-    cursor: pointer;
-    font-weight: bold;
-    color: #63122c;
-  }
-  
-  .desno{
-    text-align: right;
-  }
-  
-  .sredina{
-    text-align: center;
-  }
-  
-  .siroko{
-    width: 100%;
-  }
-  
-  .akcije{
-    margin-top: 20px;
-  }
+  cursor: pointer;
+  font-weight: bold;
+  color: #63122c;
+}
 
-  .img {
-    width: 84px;
-    height: auto;
-    object-fit: cover;
-    border: 1px solid #ccc;
+.desno{
+  text-align: right;
+}
+
+.sredina{
+  text-align: center;
+}
+
+.siroko{
+  width: 100%;
+}
+
+.akcije{
+  margin-top: 20px;
+}
+
+.loading-spinner-overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brojPolaznika{
+  font-size: 5rem;
 }

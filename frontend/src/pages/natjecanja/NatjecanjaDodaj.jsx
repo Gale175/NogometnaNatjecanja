@@ -1,21 +1,25 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { RouteNames } from "../../constants";
-import moment from "moment";
 import NatjecanjeService from "../../services/NatjecanjeService";
-
+import useLoading from "../../hooks/useLoading";
+import useError from '../../hooks/useError';
 
 export default function NatjecanjaDodaj(){
 
     const navigate = useNavigate();
+    const { showLoading, hideLoading } = useLoading();
+    const { prikaziError } = useError();
 
     async function dodaj(natjecanje){
-        //console.log(smjer)
-        //console.log(JSON.stringify(smjer))
+        showLoading();
+        //console.log(natjecanje)
+        //console.log(JSON.stringify(natjecanje))
         const odgovor = await NatjecanjeService.dodaj(natjecanje);
+        hideLoading();
         if(odgovor.greska){
-            alert(odgovor.poruka)
-            return
+            prikaziError(odgovor.poruka)
+            return;
         }
         navigate(RouteNames.NATJECANJE_PREGLED)
     }

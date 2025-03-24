@@ -1,27 +1,30 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { RouteNames } from "../../constants";
-import moment from "moment";
 import NatjecanjeService from "../../services/NatjecanjeService";
 import { useEffect, useState } from "react";
+import useLoading from "../../hooks/useLoading";
+import useError from '../../hooks/useError';
 
 
 export default function NatjecanjaPromjena(){
 
-    const navigate = useNavigate();
     const [natjecanje,setNatjecanje] = useState({});
-    const [vaucer,setVaucer] = useState(false)
+    const navigate = useNavigate();
+    const { showLoading, hideLoading } = useLoading();
     const routeParams = useParams();
+    const { prikaziError } = useError();
 
     async function dohvatiNatjecanje(){
-        const odgovor = await NatjecanjeService.getBySifra(routeParams.sifra)
-
-        if(odgovor.izvodiSeOd!=null){
-            odgovor.izvodiSeOd = moment.utc(odgovor.izvodiSeOd).format('yyyy-MM-DD')
+        showLoading();
+        const odgovor = await NatjecanjeService.getBySifra(routeParams.sifra);
+        hideLoading();
+        if(odgovor.greska){
+            prikaziError(odgovor.poruka)
+            return
         }
         
         setNatjecanje(odgovor)
-        setVaucer(odgovor.vaucer)
     }
 
     useEffect(()=>{
@@ -29,10 +32,12 @@ export default function NatjecanjaPromjena(){
     },[])
 
     async function promjena(natjecanje){
-        const odgovor = await NatjecanjeService.promjena(routeParams.sifra,natjecanje);
+        showLoading();
+        const odgovor = await NatjecanjeService.promjena(routeParams.sifra,natjecanje)
+        hideLoading();
         if(odgovor.greska){
             alert(odgovor.poruka)
-            return
+            return;
         }
         navigate(RouteNames.NATJECANJE_PREGLED)
     }
@@ -40,8 +45,8 @@ export default function NatjecanjaPromjena(){
     function odradiSubmit(e){ // e je event
         e.preventDefault(); // nemoj odraditi zahtjev na server pa standardnom načinu
 
-        let podaci = new FormData(e.target);
-
+        let podaci = new FormData(e.target)
+        //console.log(podaci.get('naziv'))
         promjena(
             {
                 naziv: podaci.get('naziv'),

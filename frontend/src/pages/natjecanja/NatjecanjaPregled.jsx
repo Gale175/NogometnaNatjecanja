@@ -1,58 +1,39 @@
 import { useEffect, useState } from "react"
 import NatjecanjeService from "../../services/NatjecanjeService"
 import { Button, Table } from "react-bootstrap";
-import { NumericFormat } from "react-number-format";
-import moment from "moment";
 import { GrValidate } from "react-icons/gr";
 import { Link, useNavigate } from "react-router-dom";
 import { RouteNames } from "../../constants";
 import { IoIosAdd } from "react-icons/io";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import useLoading from "../../hooks/useLoading";
+import useError from '../../hooks/useError';
 
 
 export default function NatjecanjaPregled(){
 
-    const[natjecanja, setNatjecanja] = useState([]); // Inicijalizacija kao prazan niz
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const { showLoading, hideLoading } = useLoading();
+    const { prikaziError } = useError();
+
+    const[natjecanja, setNatjecanja] = useState(); 
 
     async function dohvatiNatjecanja(){
+        showLoading();
         const odgovor = await NatjecanjeService.get();
-        if (odgovor.greska){
-            alert(odgovor.poruka);
-            return;
+        hideLoading();
+        if(odgovor.greska){
+            prikaziError(odgovor.poruka)
+            return
         }
-        if (Array.isArray(odgovor.poruka)) {
-            setNatjecanja(odgovor.poruka); // Postavljanje sa odgovor.poruka
-        } else {
-            console.error('API ne vraća niz natjecanja.');
-            setNatjecanja([]); // Postavite prazan niz kao fallback
-        }
-    }
+          //debugger; // ovo radi u Chrome inspect (ali i ostali preglednici)
+          setNatjecanja(odgovor.poruka)
+    } 
 
     // hooks (kuka) se izvodi prilikom dolaska na stranicu Natjecanja
     useEffect(()=>{
         dohvatiNatjecanja();
     },[])
-
-
-    function formatirajDatum(datum){
-        if(datum==null){
-            return 'Nije definirano'
-        }
-        return moment.utc(datum).format('DD. MM. YYYY.')
-    }
-
-    function vaucer(v){
-        if(v==null) return 'gray'
-        if(v) return 'green'
-        return 'red'
-    }
-
-    function vaucerText(v){
-        if(v==null) return 'Nije definirano'
-        if(v) return 'Vaučer'
-        return 'NIJE vaučer'
-    }
 
     function obrisi(sifra){
         if(!confirm('Sigurno obrisati')){
@@ -62,10 +43,12 @@ export default function NatjecanjaPregled(){
     }
 
     async function brisanjeNatjecanja(sifra) {
+        showLoading();
         const odgovor = await NatjecanjeService.obrisi(sifra);
+        hideLoading();
         if(odgovor.greska){
-            alert(odgovor.poruka);
-            return;
+            prikaziError(odgovor.poruka)
+            return
         }
         dohvatiNatjecanja();
     }

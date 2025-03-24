@@ -7,22 +7,30 @@ import { useNavigate } from "react-router-dom";
 
 import Service from "../../services/TimService"; // primjetite promjenu naziva
 import { RouteNames } from "../../constants";
+import useLoading from "../../hooks/useLoading";
+import useError from '../../hooks/useError';
 
 export default function TimoviPregled(){
     const [timovi,setTimovi] = useState();
-    let navigate = useNavigate(); 
+    let navigate = useNavigate();
+    const { showLoading, hideLoading } = useLoading();
+    const { prikaziError } = useError(); 
 
     async function dohvatiTimovi(){
+        showLoading();
         await Service.get()
         .then((odgovor)=>{
             //console.log(odgovor);
             setTimovi(odgovor);
         })
         .catch((e)=>{console.log(e)});
+        hideLoading();
     }
 
     async function obrisiTim(sifra) {
+        showLoading();
         const odgovor = await Service.obrisi(sifra);
+        showLoading();
         //console.log(odgovor);
         if(odgovor.greska){
             alert(odgovor.poruka);

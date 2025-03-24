@@ -2,17 +2,22 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { RouteNames } from "../../constants";
 import IgracService from "../../services/IgracService";
-
+import useLoading from "../../hooks/useLoading";
+import useError from '../../hooks/useError';
 
 
 export default function IgraciDodaj(){
 
     const navigate = useNavigate();
+    const { showLoading, hideLoading } = useLoading();
+    const { prikaziError } = useError();
 
     async function dodaj(e){
+        showLoading();
         const odgovor = await IgracService.dodaj(e);
+        hideLoading();
         if(odgovor.greska){
-            alert(odgovor.poruka);
+            prikaziError(odgovor.poruka);
             return;
         }
         navigate(RouteNames.IGRAC_PREGLED);
