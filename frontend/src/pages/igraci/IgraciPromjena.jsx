@@ -1,8 +1,8 @@
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Image, Row } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { RouteNames } from "../../constants";
 import IgracService from "../../services/IgracService";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useLoading from "../../hooks/useLoading";
 import useError from '../../hooks/useError';
 
@@ -16,7 +16,7 @@ export default function IgraciPromjena(){
     const navigate = useNavigate();
     const { showLoading, hideLoading } = useLoading();
     const routeParams = useParams();
-    const [igrac,setIgrac] = useState();
+    const [igrac,setIgrac] = useState({});
     const { prikaziError } = useError();
 
     const [trenutnaSlika, setTrenutnaSlika] = useState('');
