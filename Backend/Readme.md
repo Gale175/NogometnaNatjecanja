@@ -11,6 +11,8 @@
   - [AddEdunovaCORS(Services)](#M-Backend-Extensions-EdunovaExtensions-AddEdunovaCORS-Microsoft-Extensions-DependencyInjection-IServiceCollection- 'Backend.Extensions.EdunovaExtensions.AddEdunovaCORS(Microsoft.Extensions.DependencyInjection.IServiceCollection)')
   - [AddEdunovaSecurity(Services)](#M-Backend-Extensions-EdunovaExtensions-AddEdunovaSecurity-Microsoft-Extensions-DependencyInjection-IServiceCollection- 'Backend.Extensions.EdunovaExtensions.AddEdunovaSecurity(Microsoft.Extensions.DependencyInjection.IServiceCollection)')
   - [AddEdunovaSwaggerGen(Services)](#M-Backend-Extensions-EdunovaExtensions-AddEdunovaSwaggerGen-Microsoft-Extensions-DependencyInjection-IServiceCollection- 'Backend.Extensions.EdunovaExtensions.AddEdunovaSwaggerGen(Microsoft.Extensions.DependencyInjection.IServiceCollection)')
+- [EdunovaMappingProfile](#T-Backend-Mapping-EdunovaMappingProfile 'Backend.Mapping.EdunovaMappingProfile')
+  - [PutanjaDatoteke(e)](#M-Backend-Mapping-EdunovaMappingProfile-PutanjaDatoteke-Backend-Models-Igrac- 'Backend.Mapping.EdunovaMappingProfile.PutanjaDatoteke(Backend.Models.Igrac)')
 - [Entitet](#T-Backend-Models-Entitet 'Backend.Models.Entitet')
   - [Sifra](#P-Backend-Models-Entitet-Sifra 'Backend.Models.Entitet.Sifra')
 - [Igrac](#T-Backend-Models-Igrac 'Backend.Models.Igrac')
@@ -20,6 +22,15 @@
   - [Ime](#P-Backend-Models-Igrac-Ime 'Backend.Models.Igrac.Ime')
   - [Pozicija](#P-Backend-Models-Igrac-Pozicija 'Backend.Models.Igrac.Pozicija')
   - [Prezime](#P-Backend-Models-Igrac-Prezime 'Backend.Models.Igrac.Prezime')
+- [IgracController](#T-Backend-Controllers-IgracController 'Backend.Controllers.IgracController')
+  - [Delete(sifra)](#M-Backend-Controllers-IgracController-Delete-System-Int32- 'Backend.Controllers.IgracController.Delete(System.Int32)')
+  - [Get()](#M-Backend-Controllers-IgracController-Get 'Backend.Controllers.IgracController.Get')
+  - [GetBySifra(sifra)](#M-Backend-Controllers-IgracController-GetBySifra-System-Int32- 'Backend.Controllers.IgracController.GetBySifra(System.Int32)')
+  - [Post(dto)](#M-Backend-Controllers-IgracController-Post-Backend-Models-DTO-IgracDTOInsertUpdate- 'Backend.Controllers.IgracController.Post(Backend.Models.DTO.IgracDTOInsertUpdate)')
+  - [PostaviSliku(sifra,slika)](#M-Backend-Controllers-IgracController-PostaviSliku-System-Int32,Backend-Models-DTO-SlikaDTO- 'Backend.Controllers.IgracController.PostaviSliku(System.Int32,Backend.Models.DTO.SlikaDTO)')
+  - [Put(sifra,dto)](#M-Backend-Controllers-IgracController-Put-System-Int32,Backend-Models-DTO-IgracDTOInsertUpdate- 'Backend.Controllers.IgracController.Put(System.Int32,Backend.Models.DTO.IgracDTOInsertUpdate)')
+  - [TraziIgrac(uvjet)](#M-Backend-Controllers-IgracController-TraziIgrac-System-String- 'Backend.Controllers.IgracController.TraziIgrac(System.String)')
+  - [TraziIgracStranicenje(stranica,uvjet)](#M-Backend-Controllers-IgracController-TraziIgracStranicenje-System-Int32,System-String- 'Backend.Controllers.IgracController.TraziIgracStranicenje(System.Int32,System.String)')
 - [NatjecanjaContext](#T-Backend-Data-NatjecanjaContext 'Backend.Data.NatjecanjaContext')
   - [#ctor(opcije)](#M-Backend-Data-NatjecanjaContext-#ctor-Microsoft-EntityFrameworkCore-DbContextOptions{Backend-Data-NatjecanjaContext}- 'Backend.Data.NatjecanjaContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Backend.Data.NatjecanjaContext})')
   - [Igraci](#P-Backend-Data-NatjecanjaContext-Igraci 'Backend.Data.NatjecanjaContext.Igraci')
@@ -41,6 +52,9 @@
   - [#ctor(Email,Password)](#M-Backend-Models-DTO-OperaterDTO-#ctor-System-String,System-String- 'Backend.Models.DTO.OperaterDTO.#ctor(System.String,System.String)')
   - [Email](#P-Backend-Models-DTO-OperaterDTO-Email 'Backend.Models.DTO.OperaterDTO.Email')
   - [Password](#P-Backend-Models-DTO-OperaterDTO-Password 'Backend.Models.DTO.OperaterDTO.Password')
+- [SlikaDTO](#T-Backend-Models-DTO-SlikaDTO 'Backend.Models.DTO.SlikaDTO')
+  - [#ctor(Base64)](#M-Backend-Models-DTO-SlikaDTO-#ctor-System-String- 'Backend.Models.DTO.SlikaDTO.#ctor(System.String)')
+  - [Base64](#P-Backend-Models-DTO-SlikaDTO-Base64 'Backend.Models.DTO.SlikaDTO.Base64')
 - [Tim](#T-Backend-Models-Tim 'Backend.Models.Tim')
   - [Igraci](#P-Backend-Models-Tim-Igraci 'Backend.Models.Tim.Igraci')
   - [Natjecanje](#P-Backend-Models-Tim-Natjecanje 'Backend.Models.Tim.Natjecanje')
@@ -171,6 +185,34 @@ Dodaje konfiguraciju za Swagger dokumentaciju.
 | ---- | ---- | ----------- |
 | Services | [Microsoft.Extensions.DependencyInjection.IServiceCollection](#T-Microsoft-Extensions-DependencyInjection-IServiceCollection 'Microsoft.Extensions.DependencyInjection.IServiceCollection') | Instanca IServiceCollection. |
 
+<a name='T-Backend-Mapping-EdunovaMappingProfile'></a>
+## EdunovaMappingProfile `type`
+
+##### Namespace
+
+Backend.Mapping
+
+##### Summary
+
+Klasa za definiranje mapiranja između modela i DTO objekata.
+
+<a name='M-Backend-Mapping-EdunovaMappingProfile-PutanjaDatoteke-Backend-Models-Igrac-'></a>
+### PutanjaDatoteke(e) `method`
+
+##### Summary
+
+Metoda za dobivanje putanje do slike igrača.
+
+##### Returns
+
+Putanja do slike ili null ako slika ne postoji.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| e | [Backend.Models.Igrac](#T-Backend-Models-Igrac 'Backend.Models.Igrac') | Objekt igrača. |
+
 <a name='T-Backend-Models-Entitet'></a>
 ## Entitet `type`
 
@@ -241,6 +283,150 @@ Pozicija na kojoj igrač igra.
 ##### Summary
 
 Prezime polaznika.
+
+<a name='T-Backend-Controllers-IgracController'></a>
+## IgracController `type`
+
+##### Namespace
+
+Backend.Controllers
+
+<a name='M-Backend-Controllers-IgracController-Delete-System-Int32-'></a>
+### Delete(sifra) `method`
+
+##### Summary
+
+Briše igrača prema šifri.
+
+##### Returns
+
+Status brisanja.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| sifra | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Šifra igrača. |
+
+<a name='M-Backend-Controllers-IgracController-Get'></a>
+### Get() `method`
+
+##### Summary
+
+Dohvaća sve igrače.
+
+##### Returns
+
+Lista igrača.
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-Backend-Controllers-IgracController-GetBySifra-System-Int32-'></a>
+### GetBySifra(sifra) `method`
+
+##### Summary
+
+Dohvaća igrača prema šifri.
+
+##### Returns
+
+Igrač.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| sifra | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Šifra igrača. |
+
+<a name='M-Backend-Controllers-IgracController-Post-Backend-Models-DTO-IgracDTOInsertUpdate-'></a>
+### Post(dto) `method`
+
+##### Summary
+
+Dodaje novog igrača.
+
+##### Returns
+
+Status kreiranja.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| dto | [Backend.Models.DTO.IgracDTOInsertUpdate](#T-Backend-Models-DTO-IgracDTOInsertUpdate 'Backend.Models.DTO.IgracDTOInsertUpdate') | Podaci o igraču. |
+
+<a name='M-Backend-Controllers-IgracController-PostaviSliku-System-Int32,Backend-Models-DTO-SlikaDTO-'></a>
+### PostaviSliku(sifra,slika) `method`
+
+##### Summary
+
+Postavlja sliku za igrača.
+
+##### Returns
+
+Status postavljanja slike.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| sifra | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Šifra igrača. |
+| slika | [Backend.Models.DTO.SlikaDTO](#T-Backend-Models-DTO-SlikaDTO 'Backend.Models.DTO.SlikaDTO') | Podaci o slici. |
+
+<a name='M-Backend-Controllers-IgracController-Put-System-Int32,Backend-Models-DTO-IgracDTOInsertUpdate-'></a>
+### Put(sifra,dto) `method`
+
+##### Summary
+
+Ažurira igrača prema šifri.
+
+##### Returns
+
+Status ažuriranja.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| sifra | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Šifra igrača. |
+| dto | [Backend.Models.DTO.IgracDTOInsertUpdate](#T-Backend-Models-DTO-IgracDTOInsertUpdate 'Backend.Models.DTO.IgracDTOInsertUpdate') | Podaci o igraču. |
+
+<a name='M-Backend-Controllers-IgracController-TraziIgrac-System-String-'></a>
+### TraziIgrac(uvjet) `method`
+
+##### Summary
+
+Traži igrače prema uvjetu.
+
+##### Returns
+
+Lista igrača.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| uvjet | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Uvjet pretrage. |
+
+<a name='M-Backend-Controllers-IgracController-TraziIgracStranicenje-System-Int32,System-String-'></a>
+### TraziIgracStranicenje(stranica,uvjet) `method`
+
+##### Summary
+
+Traži igrače s paginacijom.
+
+##### Returns
+
+Lista igrača.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| stranica | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Broj stranice. |
+| uvjet | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Uvjet pretrage. |
 
 <a name='T-Backend-Data-NatjecanjaContext'></a>
 ## NatjecanjaContext `type`
@@ -443,6 +629,43 @@ DTO (Data Transfer Object) za operatera.
 ##### Summary
 
 
+
+<a name='T-Backend-Models-DTO-SlikaDTO'></a>
+## SlikaDTO `type`
+
+##### Namespace
+
+Backend.Models.DTO
+
+##### Summary
+
+DTO za unos slike.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| Base64 | [T:Backend.Models.DTO.SlikaDTO](#T-T-Backend-Models-DTO-SlikaDTO 'T:Backend.Models.DTO.SlikaDTO') | Slika zapisana u Base64 formatu |
+
+<a name='M-Backend-Models-DTO-SlikaDTO-#ctor-System-String-'></a>
+### #ctor(Base64) `constructor`
+
+##### Summary
+
+DTO za unos slike.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| Base64 | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Slika zapisana u Base64 formatu |
+
+<a name='P-Backend-Models-DTO-SlikaDTO-Base64'></a>
+### Base64 `property`
+
+##### Summary
+
+Slika zapisana u Base64 formatu
 
 <a name='T-Backend-Models-Tim'></a>
 ## Tim `type`
