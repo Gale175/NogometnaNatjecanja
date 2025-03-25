@@ -12,7 +12,7 @@ import useError from '../../hooks/useError';
 
 export default function IgraciPregled(){
 
-    const[igraci,setIgraci] = useState();
+    const[igraci,setIgraci] = useState([]);
     const [stranica, setStranica] = useState(1);
     const [uvjet, setUvjet] = useState('');
     const { showLoading, hideLoading } = useLoading();
@@ -126,7 +126,7 @@ export default function IgraciPregled(){
                 
             <Row>
                 
-            { igraci && Array.isArray(igraci) &&  igraci.map((p) => (
+            { igraci &&  igraci.map((p) => (
            
            <Col key={p.sifra} sm={12} lg={3} md={3}>
               <Card style={{ marginTop: '1rem' }}>

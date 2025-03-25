@@ -24,7 +24,7 @@ export default function NatjecanjaPromjena(){
             return
         }
         
-        setNatjecanje(odgovor)
+        setNatjecanje(odgovor.poruka)
     }
 
     useEffect(()=>{
