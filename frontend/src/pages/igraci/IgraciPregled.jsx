@@ -48,7 +48,6 @@ export default function IgraciPregled(){
         showLoading();
         const odgovor = await IgracService.obrisi(sifra);
         hideLoading();
-        
         //console.log(odgovor);
         if(odgovor.greska){
             prikaziError(odgovor.poruka);
@@ -73,7 +72,7 @@ export default function IgraciPregled(){
             console.log('Enter')
             setStranica(1);
             setUvjet(e.nativeEvent.srcElement.value);
-            setPolaznici([]);
+            setIgraci([]);
         }
     }
 
@@ -127,7 +126,7 @@ export default function IgraciPregled(){
                 
             <Row>
                 
-            { igraci && igraci.map((p) => (
+            { igraci && Array.isArray(igraci) &&  igraci.map((p) => (
            
            <Col key={p.sifra} sm={12} lg={3} md={3}>
               <Card style={{ marginTop: '1rem' }}>

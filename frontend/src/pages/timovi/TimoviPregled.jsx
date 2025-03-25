@@ -9,6 +9,7 @@ import Service from "../../services/TimService"; // primjetite promjenu naziva
 import { RouteNames } from "../../constants";
 import useLoading from "../../hooks/useLoading";
 import useError from '../../hooks/useError';
+import TimService from "../../services/TimService";
 
 export default function TimoviPregled(){
     const [timovi,setTimovi] = useState();
@@ -27,14 +28,22 @@ export default function TimoviPregled(){
         hideLoading();
     }
 
-    async function obrisiTim(sifra) {
+
+    function obrisi(sifra){
+        if(!confirm('Sigurno obrisati')){
+            return;
+        }
+        brisanjeTima(sifra);
+    }
+
+    async function brisanjeTima(sifra) {
         showLoading();
-        const odgovor = await Service.obrisi(sifra);
+        const odgovor = await TimService.obrisi(sifra);
         showLoading();
         //console.log(odgovor);
         if(odgovor.greska){
-            alert(odgovor.poruka);
-            return;
+            prikaziError(odgovor.poruka)
+            return
         }
         dohvatiTimovi();
     }
@@ -85,7 +94,7 @@ export default function TimoviPregled(){
                                     &nbsp;&nbsp;&nbsp;
                                     <Button
                                         variant='danger'
-                                        onClick={() => obrisiTim(entitet.sifra)}
+                                        onClick={() => obrisi(entitet.sifra)}
                                     >
                                         <FaTrash
                                     size={25}/>

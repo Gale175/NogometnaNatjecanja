@@ -14,7 +14,6 @@ export const RouteNames={
     TIM_PROMJENA: '/timovi/:sifra',
 
     LOGIN: '/login',
-    NADZORNA_PLOCA: '/nadzornaploca',
     ERA: '/era'
 }
 

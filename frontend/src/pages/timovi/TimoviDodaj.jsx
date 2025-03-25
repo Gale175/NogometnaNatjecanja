@@ -18,7 +18,7 @@ export default function TimoviDodaj() {
 
   async function dohvatiNatjecanja(){
     showLoading();
-    const odgovor = await NatjecanjaService.get();
+    const odgovor = await NatjecanjeService.get();
     hideLoading();
     setNatjecanja(odgovor.poruka);
     setNatjecanjeSifra(odgovor.poruka[0].sifra);

@@ -108,10 +108,10 @@ export default function TimoviPromjena() {
     navigate(RouteNames.TIM_PREGLED);
 }
 
-  function obradiSubmit(e) {
-    e.preventDefault();
+  function obradiSubmit(e){ // e je event
+    e.preventDefault(); // nemoj odraditi zahtjev na server pa standardnom načinu
 
-    const podaci = new FormData(e.target);
+    let podaci = new FormData(e.target);
 
 
     promjena({
@@ -124,7 +124,7 @@ export default function TimoviPromjena() {
 
   return (
       <>
-      Mijenjanje podataka tima
+      Promjena tima
       <Row>
         <Col key='1' sm={12} lg={6} md={6}>
           <Form onSubmit={obradiSubmit}>

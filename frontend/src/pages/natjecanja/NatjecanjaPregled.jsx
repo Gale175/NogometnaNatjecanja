@@ -44,7 +44,7 @@ export default function NatjecanjaPregled(){
 
     async function brisanjeNatjecanja(sifra) {
         showLoading();
-        const odgovor = await NatjecanjeService.obrisi(sifra);
+        const odgovor = await NatjecanjeService.brisanje(sifra);
         hideLoading();
         if(odgovor.greska){
             prikaziError(odgovor.poruka)

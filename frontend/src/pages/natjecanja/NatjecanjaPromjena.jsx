@@ -36,7 +36,7 @@ export default function NatjecanjaPromjena(){
         const odgovor = await NatjecanjeService.promjena(routeParams.sifra,natjecanje)
         hideLoading();
         if(odgovor.greska){
-            alert(odgovor.poruka)
+            prikaziError(odgovor.poruka);
             return;
         }
         navigate(RouteNames.NATJECANJE_PREGLED)
@@ -61,8 +61,8 @@ export default function NatjecanjaPromjena(){
 
     return(
         <>
-            Promjena natjecanja
-
+        Promjena natjecanja
+            
             <Form onSubmit={odradiSubmit}>
             <Form.Group controlId="naziv">
                     <Form.Label>Naziv</Form.Label>

@@ -20,14 +20,14 @@ async function getBySifra(sifra){
     })
 }
 
+
 async function obrisi(sifra) {
     return await HttpService.delete('/Tim/' + sifra)
-    .then((odgovor)=>{
-        //console.log(odgovor);
-        return {greska: false, poruka: odgovor.data}
+    .then(()=>{
+        return {greska: false, poruka: 'Obrisano'}
     })
     .catch(()=>{
-        return {greska: true, poruka: 'Tim se ne može obrisati!'}
+        return {greska: true, poruka: 'Problem kod brisanja natjecanja'}   
     })
 }
 
