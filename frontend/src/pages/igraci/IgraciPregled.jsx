@@ -126,7 +126,7 @@ export default function IgraciPregled(){
                 
             <Row>
                 
-            { igraci &&  igraci.map((p) => (
+            { igraci && igraci.map((p) => (
            
            <Col key={p.sifra} sm={12} lg={3} md={3}>
               <Card style={{ marginTop: '1rem' }}>
