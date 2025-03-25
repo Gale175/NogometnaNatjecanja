@@ -23,6 +23,7 @@
   - [Pozicija](#P-Backend-Models-Igrac-Pozicija 'Backend.Models.Igrac.Pozicija')
   - [Prezime](#P-Backend-Models-Igrac-Prezime 'Backend.Models.Igrac.Prezime')
 - [IgracController](#T-Backend-Controllers-IgracController 'Backend.Controllers.IgracController')
+  - [#ctor(context,mapper)](#M-Backend-Controllers-IgracController-#ctor-Backend-Data-NatjecanjaContext,AutoMapper-IMapper- 'Backend.Controllers.IgracController.#ctor(Backend.Data.NatjecanjaContext,AutoMapper.IMapper)')
   - [Delete(sifra)](#M-Backend-Controllers-IgracController-Delete-System-Int32- 'Backend.Controllers.IgracController.Delete(System.Int32)')
   - [Get()](#M-Backend-Controllers-IgracController-Get 'Backend.Controllers.IgracController.Get')
   - [GetBySifra(sifra)](#M-Backend-Controllers-IgracController-GetBySifra-System-Int32- 'Backend.Controllers.IgracController.GetBySifra(System.Int32)')
@@ -290,6 +291,30 @@ Prezime polaznika.
 ##### Namespace
 
 Backend.Controllers
+
+##### Summary
+
+Kontroler za upravljanje igračima.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| context | [T:Backend.Controllers.IgracController](#T-T-Backend-Controllers-IgracController 'T:Backend.Controllers.IgracController') | Kontekst baze podataka. |
+
+<a name='M-Backend-Controllers-IgracController-#ctor-Backend-Data-NatjecanjaContext,AutoMapper-IMapper-'></a>
+### #ctor(context,mapper) `constructor`
+
+##### Summary
+
+Kontroler za upravljanje igračima.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| context | [Backend.Data.NatjecanjaContext](#T-Backend-Data-NatjecanjaContext 'Backend.Data.NatjecanjaContext') | Kontekst baze podataka. |
+| mapper | [AutoMapper.IMapper](#T-AutoMapper-IMapper 'AutoMapper.IMapper') | Mapper za mapiranje objekata. |
 
 <a name='M-Backend-Controllers-IgracController-Delete-System-Int32-'></a>
 ### Delete(sifra) `method`

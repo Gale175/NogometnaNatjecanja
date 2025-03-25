@@ -16,7 +16,7 @@ export default function IgraciPromjena(){
     const navigate = useNavigate();
     const { showLoading, hideLoading } = useLoading();
     const routeParams = useParams();
-    const [igrac,setIgrac] = useState({});
+    const [igrac,setIgrac] = useState();
     const { prikaziError } = useError();
 
     const [trenutnaSlika, setTrenutnaSlika] = useState('');

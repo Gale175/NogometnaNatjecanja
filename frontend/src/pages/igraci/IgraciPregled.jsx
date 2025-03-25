@@ -134,6 +134,9 @@ export default function IgraciPregled(){
                 <Card.Body>
                   <Card.Title>{p.ime} {p.prezime}</Card.Title>
                   <Card.Text>
+                    {p.pozicija}
+                  </Card.Text>
+                  <Card.Text>
                     {p.golovi}
                   </Card.Text>
                   <Card.Text>
