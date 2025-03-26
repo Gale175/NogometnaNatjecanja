@@ -11,7 +11,7 @@
         public string Ime { get; set; } = "";
 
         /// <summary>
-        /// Prezime polaznika.
+        /// Prezime igrača.
         /// </summary>
         public string Prezime { get; set; } = "";
 
@@ -35,6 +35,9 @@
         /// </summary>
         public int Asistencije { get; set; }
 
+        /// <summary>
+        /// Tim u koji je igrač član.
+        /// </summary>
         public ICollection<Tim>? Timovi { get; } = [];
 
     }
