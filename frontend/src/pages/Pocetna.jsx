@@ -1,6 +1,5 @@
 import React from 'react';
 import nogometnaPozadina from '../assets/nogometna_pozadina.jpeg';
-import nogometnaPozadinaMobile from '../assets/nogometna_pozadina_mobile.jpg';
 import '../App.css';
 
 
