@@ -146,8 +146,6 @@ export default function IgraciPromjena(){
               <Col key='1' sm={12} lg={6} md={12}>
                 <p className='form-label'>Trenutna slika</p>
                 <Image
-                  //za lokalni development
-                  //src={'https://edunovawp1.eu/' + trenutnaSlika}
                   src={trenutnaSlika}
                   className='slika'
                 />
