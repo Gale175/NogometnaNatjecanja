@@ -12,23 +12,16 @@ namespace Backend.Controllers
     /// <param name="context">Instanca NatjecanjaContext klase koja se koristi za pristup bazi podataka.</param>
     /// <param name="mapper">Instanca IMapper sučelja koja se koristi za mapiranje objekata.</param>
     [Authorize]
-    public abstract class NogometnaNatjecanjaController:ControllerBase
+    public abstract class NogometnaNatjecanjaController(NatjecanjaContext context, IMapper mapper) : ControllerBase
     {
+        /// <summary>
+        /// Kontekst baze podataka.
+        /// </summary>
+        protected readonly NatjecanjaContext _context = context;
 
-        // dependecy injection
-        // 1. definiraš privatno svojstvo
-        protected readonly NatjecanjaContext _context;
-
-        protected readonly IMapper _mapper;
-
-
-        // dependecy injection
-        // 2. proslijediš instancu kroz konstruktor
-        public NogometnaNatjecanjaController(NatjecanjaContext context, IMapper mapper)
-        {
-            _context = context;
-            _mapper = mapper;
-        }
-
+        /// <summary>
+        /// Mapper za mapiranje objekata.
+        /// </summary>
+        protected readonly IMapper _mapper = mapper;
     }
 }

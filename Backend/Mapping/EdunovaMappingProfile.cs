@@ -9,12 +9,12 @@ namespace Backend.Mapping
     /// </summary>
     public class EdunovaMappingProfile : Profile
     {
+        /// <summary>
+        /// Konstruktor u kojem se definiraju mapiranja.
+        /// </summary>
         public EdunovaMappingProfile()
         {
-
-            /// <summary>
-            /// Konstruktor u kojem se definiraju mapiranja.
-            /// </summary>
+            // kreiramo mapiranja: izvor, odredište
             CreateMap<Natjecanje, NatjecanjeDTORead>();
             CreateMap<NatjecanjeDTOInsertUpdate, Natjecanje>();
             CreateMap<Natjecanje, NatjecanjeDTOInsertUpdate>();
