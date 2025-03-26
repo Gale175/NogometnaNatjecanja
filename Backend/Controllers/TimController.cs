@@ -7,6 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers
 {
+    /// <summary>
+    /// Kontroler za upravljanje timovima u aplikaciji.
+    /// </summary>
+    /// <param name="context">Instanca NatjecanjaContext klase koja se koristi za pristup bazi podataka.</param>
+    /// <param name="mapper">Instanca IMapper sučelja koja se koristi za mapiranje objekata.</param>
 
     [ApiController]
     [Route("api/v1/[controller]")]
@@ -14,7 +19,10 @@ namespace Backend.Controllers
     {
 
 
-        // RUTE
+        /// <summary>
+        /// Dohvaća sve timove.
+        /// </summary>
+        /// <returns>Lista timova.</returns>
         [HttpGet]
         public ActionResult<List<TimDTORead>> Get()
         {
@@ -33,7 +41,11 @@ namespace Backend.Controllers
 
         }
 
-
+        /// <summary>
+        /// Dohvaća tim prema šifri.
+        /// </summary>
+        /// <param name="sifra">Šifra tima.</param>
+        /// <returns>Tim sa zadanom šifrom.</returns>
         [HttpGet]
         [Route("{sifra:int}")]
         public ActionResult<TimDTOInsertUpdate> GetBySifra(int sifra)
@@ -59,6 +71,12 @@ namespace Backend.Controllers
             return Ok(_mapper.Map<TimDTOInsertUpdate>(e));
         }
 
+
+        /// <summary>
+        /// Dodaje novi tim.
+        /// </summary>
+        /// <param name="dto">Podaci o timu.</param>
+        /// <returns>Status kreiranja.</returns>
         [HttpPost]
         public IActionResult Post(TimDTOInsertUpdate dto)
         {
@@ -98,6 +116,13 @@ namespace Backend.Controllers
 
         }
 
+
+        /// <summary>
+        /// Ažurira postojeći tim.
+        /// </summary>
+        /// <param name="sifra">Šifra tima.</param>
+        /// <param name="dto">Podaci o timu.</param>
+        /// <returns>Status ažuriranja.</returns>
         [HttpPut]
         [Route("{sifra:int}")]
         [Produces("application/json")]
@@ -151,6 +176,12 @@ namespace Backend.Controllers
 
         }
 
+
+        /// <summary>
+        /// Briše tim prema šifri.
+        /// </summary>
+        /// <param name="sifra">Šifra tima.</param>
+        /// <returns>Status brisanja.</returns>
         [HttpDelete]
         [Route("{sifra:int}")]
         [Produces("application/json")]
@@ -186,6 +217,11 @@ namespace Backend.Controllers
         }
 
 
+        /// <summary>
+        /// Dohvaća igrače tima prema šifri tima.
+        /// </summary>
+        /// <param name="sifraTimovi">Šifra tima.</param>
+        /// <returns>Lista polaznika tima.</returns>
         [HttpGet]
         [Route("Igraci/{sifraTimovi:int}")]
         public ActionResult<List<IgracDTORead>> GetTimovi(int sifraTimovi)
@@ -212,7 +248,12 @@ namespace Backend.Controllers
         }
 
 
-
+        /// <summary>
+        /// Dodaje igrača u tim.
+        /// </summary>
+        /// <param name="sifra">Šifra tima.</param>
+        /// <param name="igracSifra">Šifra igrača.</param>
+        /// <returns>Status dodavanja.</returns>
         [HttpPost]
         [Route("{sifra:int}/dodaj/{igracSifra:int}")]
         public IActionResult DodajPolaznika(int sifra, int igracSifra)
@@ -257,6 +298,12 @@ namespace Backend.Controllers
         }
 
 
+        /// <summary>
+        /// Briše igrača iz tima.
+        /// </summary>
+        /// <param name="sifra">Šifra tima.</param>
+        /// <param name="igracSifra">Šifra igrača.</param>
+        /// <returns>Status brisanja.</returns>
         [HttpDelete]
         [Route("{sifra:int}/obrisi/{igracSifra:int}")]
         public IActionResult ObrisiIgraca(int sifra, int igracSifra)

@@ -9,8 +9,9 @@ namespace Backend.Models.DTO
     /// <param name="Prezime">Prezime igrača. Obavezno polje.</param>
     /// <param name="Dob">Dob igrača.</param>
     /// <param name="Pozicija">Pozicija na kojoj igrač igra.</param>
-    /// /// <param name="Golovi">Broj postignutih golova u karijeri igrača.</param>
-    /// /// <param name="Asistencije">Broj asistencija u karijeri igrača.</param>
+    /// <param name="Golovi">Broj postignutih golova u karijeri igrača.</param>
+    /// <param name="Asistencije">Broj asistencija u karijeri igrača.</param>
+    /// <param name="Slika">URL slike igrača (opcionalno).</param>
     public record IgracDTOInsertUpdate(
         [Required(ErrorMessage = "Ime obavezno")]
         string Ime,
@@ -19,5 +20,6 @@ namespace Backend.Models.DTO
         int? Dob,
         string? Pozicija,
         int? Golovi,
-        int? Asistencije);
+        int? Asistencije,
+        string? Slika);
 }

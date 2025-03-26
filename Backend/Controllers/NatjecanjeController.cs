@@ -7,11 +7,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
 {
+    /// <summary>
+    /// Kontroler za upravljanje natjecanjima u aplikaciji.
+    /// </summary>
+    /// <param name="context">Instanca NatjecanjaContext klase koja se koristi za pristup bazi podataka.</param>
+    /// <param name="mapper">Instanca IMapper sučelja koja se koristi za mapiranje objekata.</param>
     [ApiController]
     [Route("api/v1/[controller]")]
     public class NatjecanjeController(NatjecanjaContext context, IMapper mapper) : NogometnaNatjecanjaController(context, mapper)
     {
-        // RUTE
+        /// <summary>
+        /// Dohvaća sva natjecanja.
+        /// </summary>
+        /// <returns>Lista DTO objekata natjecanja.</returns>
         [HttpGet]
         public ActionResult<List<NatjecanjeDTORead>> Get()
         {
@@ -30,6 +38,11 @@ namespace Backend.Controllers
 
         }
 
+        /// <summary>
+        /// Dohvaća natjecanje prema šifri.
+        /// </summary>
+        /// <param name="sifra">Šifra natjecanja.</param>
+        /// <returns>DTO objekt natjecanja.</returns>
         [HttpGet]
         [Route("{sifra:int}")]
         public ActionResult<NatjecanjeDTOInsertUpdate> GetBySifra(int sifra)
@@ -55,6 +68,12 @@ namespace Backend.Controllers
             return Ok(_mapper.Map<NatjecanjeDTOInsertUpdate>(e));
         }
 
+
+        /// <summary>
+        /// Dodaje novo natjecanje.
+        /// </summary>
+        /// <param name="dto">DTO objekt za unos ili ažuriranje natjecanja.</param>
+        /// <returns>Status kreiranja i DTO objekt novog natjecanja.</returns>
         [HttpPost]
         public IActionResult Post(NatjecanjeDTOInsertUpdate dto)
         {
@@ -78,6 +97,13 @@ namespace Backend.Controllers
 
         }
 
+
+        /// <summary>
+        /// Ažurira postojeće natjecanje prema šifri.
+        /// </summary>
+        /// <param name="sifra">Šifra natjecanja.</param>
+        /// <param name="dto">DTO objekt za unos ili ažuriranje natjecanja.</param>
+        /// <returns>Status ažuriranja.</returns>
         [HttpPut]
         [Route("{sifra:int}")]
         [Produces("application/json")]
@@ -117,6 +143,12 @@ namespace Backend.Controllers
 
         }
 
+
+        /// <summary>
+        /// Briše natjecanje prema šifri.
+        /// </summary>
+        /// <param name="sifra">Šifra natjecanja.</param>
+        /// <returns>Status brisanja.</returns>
         [HttpDelete]
         [Route("{sifra:int}")]
         [Produces("application/json")]

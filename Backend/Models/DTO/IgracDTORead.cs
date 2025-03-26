@@ -10,8 +10,8 @@ namespace Backend.Models.DTO
     /// <param name="Dob">Dob igrača.</param>
     /// <param name="Pozicija">Pozicija na kojoj igrač igra.</param>
     /// <param name="Golovi">Postigunuti golovi igrača u karijeri.</param>
-    /// /// <param name="Asistencije">Postigunute asistencije igrača u karijeri.</param>
-    /// /// <param name="Slika">URL slike igrača (opcionalno).</param>
+    /// <param name="Asistencije">Postigunute asistencije igrača u karijeri.</param>
+    /// <param name="Slika">URL slike igrača (opcionalno).</param>
     public record IgracDTORead(
         int? Sifra, 
         string Ime, 
