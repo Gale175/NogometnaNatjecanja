@@ -27,7 +27,7 @@ export default function IgraciPregled(){
             prikaziError(odgovor.poruka);
             return;
         }
-        if(odgovor.poruka.length==0){
+        if(odgovor.poruka.length==0 && stranica>1){
             setStranica(stranica-1);
             return;
         }
